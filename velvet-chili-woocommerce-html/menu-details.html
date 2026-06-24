@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velvet Chili Restaurant</title>
+
+    <!-- ===== CSS Files ===== -->
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="theme.css" />
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===== Font Awesome for icons ===== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ===================== HEADER / NAVBAR ===================== -->
+    <header class="site-header" id="siteHeader">
+      <div class="header__container">
+        <!-- Logo -->
+        <a href="#" class="header__logo" aria-label="Velvet Chili Home">
+          <span class="logo__icon">
+            <i class="fa-solid fa-pepper-hot"></i>
+          </span>
+          <span class="logo__text">
+            Velvet<span class="logo__text--accent">Chili</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="nav nav--desktop"
+          id="desktopNav"
+          aria-label="Main navigation"
+        >
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link nav__link--active">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">About</a>
+            </li>
+            <li class="nav__item">
+              <a href="#menu" class="nav__link">Our Menu</a>
+            </li>
+            <li class="nav__item">
+              <a href="#book" class="nav__link nav__link--cta">Book A Table</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Hamburger Toggle Button (Mobile) -->
+        <button
+          class="hamburger"
+          id="hamburgerBtn"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Overlay -->
+      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav__backdrop"></div>
+        <nav class="mobile-nav__panel" aria-label="Mobile navigation">
+          <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+              <a href="#home" class="mobile-nav__link mobile-nav__link--active"
+                >Home</a
+              >
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#about" class="mobile-nav__link">About</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#menu" class="mobile-nav__link">Our Menu</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#book" class="mobile-nav__link mobile-nav__link--cta"
+                >Book A Table</a
+              >
+            </li>
+          </ul>
+
+          <!-- Mobile contact info -->
+          <div class="mobile-nav__info">
+            <p class="mobile-nav__phone">
+              <i class="fa-solid fa-phone"></i> (555) 123-4567
+            </p>
+            <p class="mobile-nav__hours">
+              <i class="fa-regular fa-clock"></i> Tue–Sun &nbsp;5pm–11pm
+            </p>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===================== SINGLE PRODUCT DETAILS ===================== -->
+    <section class="product-detail" id="product-detail">
+      <div class="product-detail__container">
+        <!-- Back to menu link -->
+        <a href="menu.html" class="product-detail__back">
+          <i class="fa-solid fa-arrow-left"></i> Back to Full Menu
+        </a>
+
+        <div class="product-detail__grid">
+          <!-- Product image (left) -->
+          <div class="product-detail__image">
+            <img
+              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop"
+              alt="Smoked Ancho Ribeye"
+            />
+          </div>
+
+          <!-- Product info (right) -->
+          <div class="product-detail__info">
+            <span class="product-detail__kicker">Signature Main</span>
+            <h1 class="product-detail__name">Smoked Ancho Ribeye</h1>
+            <div class="product-detail__price">$48</div>
+
+            <div class="product-detail__description">
+              <p>
+                A 12‑hour chili‑cocoa rubbed prime ribeye, grilled to your
+                liking over mesquite wood. Served with roasted bone marrow
+                butter, grilled asparagus, and truffle‑infused hand‑cut fries.
+              </p>
+              <p>
+                The ancho chili imparts a deep, smoky sweetness that perfectly
+                complements the rich marbling of the ribeye – a true celebration
+                of fire and spice.
+              </p>
+            </div>
+
+            <!-- Dietary / tags -->
+            <div class="product-detail__tags">
+              <span class="tag">Gluten‑Free Option</span>
+              <span class="tag">Contains Dairy</span>
+            </div>
+
+            <!-- Add to cart button -->
+            <a
+              href="?add-to-cart=5"
+              class="btn btn--primary product-detail__add-to-cart"
+            >
+              Add to Cart – $48
+            </a>
+
+            <!-- Chef's note (optional) -->
+            <div class="product-detail__chef-note">
+              <h3>Chef Elena’s Note</h3>
+              <p>
+                “This dish is the heart of our kitchen. The cocoa in the rub
+                mellows the chili heat while the bone marrow butter adds an
+                unforgettable velvet finish. Pair it with our Smoky Margarita.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer" id="siteFooter">
+      <div class="site-footer__container">
+        <div class="site-footer__grid">
+          <!-- Column 1: About -->
+          <div class="site-footer__col site-footer__col--about">
+            <a href="#" class="site-footer__logo">
+              <span class="site-footer__logo-icon"
+                ><i class="fa-solid fa-pepper-hot"></i
+              ></span>
+              <span class="site-footer__logo-text"
+                >Velvet<span class="site-footer__logo-accent">Chili</span></span
+              >
+            </a>
+            <p class="site-footer__desc">
+              A modern dining experience built around the soul of the chili
+              pepper. Slow‑cooked, bold, and unforgettable.
+            </p>
+            <div class="site-footer__social">
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="TripAdvisor"
+                ><i class="fa-brands fa-tripadvisor"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="site-footer__col site-footer__col--links">
+            <h4 class="site-footer__heading">Quick Links</h4>
+            <ul class="site-footer__links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#menu">Our Menu</a></li>
+              <li><a href="#book">Book A Table</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact -->
+          <div class="site-footer__col site-footer__col--contact">
+            <h4 class="site-footer__heading">Contact</h4>
+            <ul class="site-footer__contact">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span
+                  >427 Spice Avenue,<br />Gastronomy District, NY 10012</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+15551234567">(555) 123-4567</a>
+              </li>
+              <li>
+                <i class="fa-regular fa-envelope"></i>
+                <a href="mailto:hello@velvetchili.com">hello@velvetchili.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Opening Hours -->
+          <div class="site-footer__col site-footer__col--hours">
+            <h4 class="site-footer__heading">Hours</h4>
+            <ul class="site-footer__hours">
+              <li><span>Mon – Thu</span><span>5 PM – 10 PM</span></li>
+              <li><span>Friday</span><span>5 PM – 11 PM</span></li>
+              <li><span>Saturday</span><span>12 PM – 11 PM</span></li>
+              <li><span>Sunday</span><span>12 PM – 9 PM</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright (updated) -->
+        <div class="site-footer__bottom">
+          <div class="footer-content">
+            <p>
+              &copy; 2026 Velvet Chili — Where Warmth Meets Flavor. All rights
+              reserved.
+            </p>
+            <div class="footer-links">
+              <a href="#">Privacy</a>
+              <a href="#">Accessibility</a>
+              <a href="#">Careers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JS File ===== -->
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velvet Chili Restaurant</title>
+
+    <!-- ===== CSS Files ===== -->
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="theme.css" />
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===== Font Awesome for icons ===== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ===================== Header / Navbar ===================== -->
+    <header class="site-header" id="siteHeader">
+      <div class="header__container">
+        <!-- Logo -->
+        <a href="#" class="header__logo" aria-label="Velvet Chili Home">
+          <span class="logo__icon">
+            <i class="fa-solid fa-pepper-hot"></i>
+          </span>
+          <span class="logo__text">
+            Velvet<span class="logo__text--accent">Chili</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="nav nav--desktop"
+          id="desktopNav"
+          aria-label="Main navigation"
+        >
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link nav__link--active">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">About</a>
+            </li>
+            <li class="nav__item">
+              <a href="#menu" class="nav__link">Our Menu</a>
+            </li>
+            <li class="nav__item">
+              <a href="#book" class="nav__link nav__link--cta">Book A Table</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Hamburger Toggle Button (Mobile) -->
+        <button
+          class="hamburger"
+          id="hamburgerBtn"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Overlay -->
+      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav__backdrop"></div>
+        <nav class="mobile-nav__panel" aria-label="Mobile navigation">
+          <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+              <a href="#home" class="mobile-nav__link mobile-nav__link--active"
+                >Home</a
+              >
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#about" class="mobile-nav__link">About</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#menu" class="mobile-nav__link">Our Menu</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#book" class="mobile-nav__link mobile-nav__link--cta"
+                >Book A Table</a
+              >
+            </li>
+          </ul>
+
+          <!-- Mobile contact info -->
+          <div class="mobile-nav__info">
+            <p class="mobile-nav__phone">
+              <i class="fa-solid fa-phone"></i> (555) 123-4567
+            </p>
+            <p class="mobile-nav__hours">
+              <i class="fa-regular fa-clock"></i> Tue–Sun &nbsp;5pm–11pm
+            </p>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- ========== About Page ========== -->
+    <section class="about-page" id="about">
+      <div class="about-page__container">
+        <!-- Section header -->
+        <div class="about-page__header text-center">
+          <span class="about-page__kicker">Our Story</span>
+          <h2 class="about-page__title">The Heart of Velvet Chili</h2>
+        </div>
+
+        <!-- Two‑column layout: text + slider -->
+        <div class="about-page__grid">
+          <!-- Left: Chef Story & Philosophy -->
+          <div class="about-page__text">
+            <h3 class="about-page__subtitle">Meet Chef Elena Vasquez</h3>
+            <p class="about-page__body">
+              With over twenty‑five years of experience, Chef Elena has honed
+              her craft in the bustling markets of Oaxaca and the refined
+              kitchens of Europe. Her passion lies in transforming humble chili
+              peppers into complex, soul‑warming dishes that surprise and
+              delight. Every plate she creates tells a story of fire, patience,
+              and a deep respect for ingredients.
+            </p>
+
+            <h3 class="about-page__subtitle">Our Philosophy</h3>
+            <p class="about-page__body">
+              At Velvet Chili, we believe that great food is about balance –
+              heat and sweetness, tradition and innovation, comfort and
+              elegance. We source our chilies from small family farms, slow‑cook
+              our meats for hours, and treat every guest like family. Dining
+              here is not just a meal; it’s a journey through the rich tapestry
+              of chili culture.
+            </p>
+          </div>
+
+          <!-- Right: Event Image Slider -->
+          <div class="about-page__slider">
+            <div
+              class="event-slider"
+              id="eventSlider"
+              aria-roledescription="carousel"
+              aria-label="Restaurant events"
+            >
+              <!-- Slides -->
+              <div class="event-slider__slides" id="eventSlides">
+                <!-- Slide 1 -->
+                <div
+                  class="event-slider__slide event-slider__slide--active"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="1 of 3"
+                >
+                  <div
+                    class="event-slider__bg"
+                    style="
+                      background-image: url(&quot;https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2070&auto=format&fit=crop&quot;);
+                    "
+                  ></div>
+                  <div class="event-slider__overlay"></div>
+                  <div class="event-slider__content">
+                    <h3 class="event-slider__title">Private Dining</h3>
+                    <p class="event-slider__subtitle">
+                      Intimate celebrations in our candlelit cellar
+                    </p>
+                  </div>
+                </div>
+                <!-- Slide 2 -->
+                <div
+                  class="event-slider__slide"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="2 of 3"
+                >
+                  <div
+                    class="event-slider__bg"
+                    style="
+                      background-image: url(&quot;https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&quot;);
+                    "
+                  ></div>
+                  <div class="event-slider__overlay"></div>
+                  <div class="event-slider__content">
+                    <h3 class="event-slider__title">Wine Pairing Nights</h3>
+                    <p class="event-slider__subtitle">
+                      Every Thursday with our sommelier
+                    </p>
+                  </div>
+                </div>
+                <!-- Slide 3 -->
+                <div
+                  class="event-slider__slide"
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label="3 of 3"
+                >
+                  <div
+                    class="event-slider__bg"
+                    style="
+                      background-image: url(&quot;https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop&quot;);
+                    "
+                  ></div>
+                  <div class="event-slider__overlay"></div>
+                  <div class="event-slider__content">
+                    <h3 class="event-slider__title">Chili Masterclass</h3>
+                    <p class="event-slider__subtitle">
+                      Learn the art of smoke & spice
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Arrows -->
+              <button
+                class="event-slider__arrow event-slider__arrow--left"
+                id="eventPrev"
+                aria-label="Previous slide"
+              >
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button
+                class="event-slider__arrow event-slider__arrow--right"
+                id="eventNext"
+                aria-label="Next slide"
+              >
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <!-- Dots -->
+              <div class="event-slider__dots" id="eventDots" aria-hidden="true">
+                <button
+                  class="event-slider__dot event-slider__dot--active"
+                  data-slide="0"
+                ></button>
+                <button class="event-slider__dot" data-slide="1"></button>
+                <button class="event-slider__dot" data-slide="2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== Footer ========== -->
+    <footer class="site-footer" id="siteFooter">
+      <div class="site-footer__container">
+        <div class="site-footer__grid">
+          <!-- Column 1: About -->
+          <div class="site-footer__col site-footer__col--about">
+            <a href="#" class="site-footer__logo">
+              <span class="site-footer__logo-icon"
+                ><i class="fa-solid fa-pepper-hot"></i
+              ></span>
+              <span class="site-footer__logo-text"
+                >Velvet<span class="site-footer__logo-accent">Chili</span></span
+              >
+            </a>
+            <p class="site-footer__desc">
+              A modern dining experience built around the soul of the chili
+              pepper. Slow‑cooked, bold, and unforgettable.
+            </p>
+            <div class="site-footer__social">
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="TripAdvisor"
+                ><i class="fa-brands fa-tripadvisor"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="site-footer__col site-footer__col--links">
+            <h4 class="site-footer__heading">Quick Links</h4>
+            <ul class="site-footer__links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#menu">Our Menu</a></li>
+              <li><a href="#book">Book A Table</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact -->
+          <div class="site-footer__col site-footer__col--contact">
+            <h4 class="site-footer__heading">Contact</h4>
+            <ul class="site-footer__contact">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span
+                  >427 Spice Avenue,<br />Gastronomy District, NY 10012</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+15551234567">(555) 123-4567</a>
+              </li>
+              <li>
+                <i class="fa-regular fa-envelope"></i>
+                <a href="mailto:hello@velvetchili.com">hello@velvetchili.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Opening Hours -->
+          <div class="site-footer__col site-footer__col--hours">
+            <h4 class="site-footer__heading">Hours</h4>
+            <ul class="site-footer__hours">
+              <li><span>Mon – Thu</span><span>5 PM – 10 PM</span></li>
+              <li><span>Friday</span><span>5 PM – 11 PM</span></li>
+              <li><span>Saturday</span><span>12 PM – 11 PM</span></li>
+              <li><span>Sunday</span><span>12 PM – 9 PM</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="site-footer__bottom">
+          <div class="footer-content">
+            <p>
+              &copy; 2026 Velvet Chili — Where Warmth Meets Flavor. All rights
+              reserved.
+            </p>
+            <div class="footer-links">
+              <a href="#">Privacy</a>
+              <a href="#">Accessibility</a>
+              <a href="#">Careers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JS File ===== -->
+    <script src="main.js"></script>
+  </body>
+</html>

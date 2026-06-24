@@ -1,18 +1,21 @@
 <?php
+/*
+ * =================================================================
+ * Theme Name: Velvet Chili Restaurant Shop
+ * Version: 1.0.0
+ * Author: Shaik Obydullah
+ * Author URI: https://obydullah.com
+ * Purpose: Velvet Chili Restaurant Shop Theme Functions
+ * =================================================================
+ */
+
 /**
- * Theme Name: Obydullah Restaurant 
- * Description: Obydullah Restaurant Theme Functions
- *
- * ================================================================
- *                         INDEX
- * ================================================================
+ * INDEX
  * 1. Assets
  * 2. Theme Setup
  * 3. Sidebar / Widget Area
- * 4. Fallback Menus
- * 5. Customizer Settings
- * 6. Admin Notice
- * ================================================================
+ * 4. Customizer Settings
+ * 5. Admin Notice
  */
 
 /* ======================================================
@@ -227,8 +230,8 @@ function obydullah_restaurant_admin_notice() {
         <?php esc_html_e( 'Install recommended plugins:', 'obydullah-restaurant' ); ?></p>
     <ul style="list-style: disc; margin-left: 1.5em;">
         <?php if ( ! $core_active ) : ?>
-        <li><strong>Obydullah Restaurant Core</strong> –
-            <?php esc_html_e( 'menu & testimonials system', 'obydullah-restaurant' ); ?></li>
+        <li><strong>Obydullah Restaurant Shop Core</strong> –
+            <?php esc_html_e( 'menu & testimonials system', 'obydullah-restaurant-shop' ); ?></li>
         <?php endif; ?>
         <?php if ( ! $cf7_active ) : ?>
         <li><strong>Contact Form 7</strong> –

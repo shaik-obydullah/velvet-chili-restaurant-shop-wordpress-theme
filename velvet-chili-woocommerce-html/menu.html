@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velvet Chili – Full Menu</title>
+
+    <!-- ===== CSS Files ===== -->
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="theme.css" />
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===== Font Awesome ===== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ===================== HEADER (identical to main page) ===================== -->
+    <header class="site-header" id="siteHeader">
+      <div class="header__container">
+        <a
+          href="index.html"
+          class="header__logo"
+          aria-label="Velvet Chili Home"
+        >
+          <span class="logo__icon"><i class="fa-solid fa-pepper-hot"></i></span>
+          <span class="logo__text"
+            >Velvet<span class="logo__text--accent">Chili</span></span
+          >
+        </a>
+        <nav class="nav nav--desktop" aria-label="Main navigation">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="index.html#about" class="nav__link">Our Story</a>
+            </li>
+            <li class="nav__item">
+              <a href="menu.html" class="nav__link nav__link--active"
+                >Our Menu</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="index.html#testimonials" class="nav__link">Reviews</a>
+            </li>
+            <li class="nav__item">
+              <a href="index.html#book" class="nav__link nav__link--cta"
+                >Book A Table</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <button
+          class="hamburger"
+          id="hamburgerBtn"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav__backdrop"></div>
+        <nav class="mobile-nav__panel" aria-label="Mobile navigation">
+          <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+              <a href="index.html" class="mobile-nav__link">Home</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="index.html#about" class="mobile-nav__link">Our Story</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a
+                href="menu.html"
+                class="mobile-nav__link mobile-nav__link--active"
+                >Our Menu</a
+              >
+            </li>
+            <li class="mobile-nav__item">
+              <a href="index.html#testimonials" class="mobile-nav__link"
+                >Reviews</a
+              >
+            </li>
+            <li class="mobile-nav__item">
+              <a
+                href="index.html#book"
+                class="mobile-nav__link mobile-nav__link--cta"
+                >Book A Table</a
+              >
+            </li>
+          </ul>
+          <div class="mobile-nav__info">
+            <p class="mobile-nav__phone">
+              <i class="fa-solid fa-phone"></i> (555) 123-4567
+            </p>
+            <p class="mobile-nav__hours">
+              <i class="fa-regular fa-clock"></i> Tue–Sun 5pm–11pm
+            </p>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===================== FULL MENU WITH FILTER ===================== -->
+    <section class="full-menu" id="full-menu">
+      <div class="full-menu__container">
+        <div class="full-menu__header text-center">
+          <span class="full-menu__kicker">From Our Kitchen</span>
+          <h2 class="full-menu__title">The Velvet Chili Menu</h2>
+          <p class="full-menu__subtitle">
+            Every dish celebrates the chili in all its forms – smoked, dried,
+            fresh, and roasted.
+          </p>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn filter-btn--active" data-filter="all">
+            All
+          </button>
+          <button class="filter-btn" data-filter="starters">Starters</button>
+          <button class="filter-btn" data-filter="mains">Mains</button>
+          <button class="filter-btn" data-filter="desserts">Desserts</button>
+          <button class="filter-btn" data-filter="drinks">Drinks</button>
+        </div>
+
+        <!-- Menu Items Grid (WooCommerce-ready cards) -->
+        <div class="products-grid" id="menuGrid">
+          <!-- Starters -->
+          <div class="product-card" data-category="starters">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+                alt="Smoked Pasilla Soup"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Smoked Pasilla Soup</h3>
+              <span class="product-card__price">$14</span>
+              <a
+                href="?add-to-cart=1"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="starters">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop"
+                alt="Ancho Prawns"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Ancho Prawns</h3>
+              <span class="product-card__price">$18</span>
+              <a
+                href="?add-to-cart=2"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="starters">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?q=80&w=800&auto=format&fit=crop"
+                alt="Guajillo Hummus"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Guajillo Hummus</h3>
+              <span class="product-card__price">$12</span>
+              <a
+                href="?add-to-cart=3"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="starters">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+                alt="Chili‑Lime Ceviche"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Chili‑Lime Ceviche</h3>
+              <span class="product-card__price">$16</span>
+              <a
+                href="?add-to-cart=4"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <!-- Mains -->
+          <div class="product-card" data-category="mains">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+                alt="Smoked Ancho Ribeye"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Smoked Ancho Ribeye</h3>
+              <span class="product-card__price">$48</span>
+              <a
+                href="?add-to-cart=5"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="mains">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+                alt="Velvet Braised Short Rib"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Velvet Braised Short Rib</h3>
+              <span class="product-card__price">$52</span>
+              <a
+                href="?add-to-cart=6"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="mains">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop"
+                alt="Fire‑Roasted Poblano Relleno"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Fire‑Roasted Poblano Relleno</h3>
+              <span class="product-card__price">$38</span>
+              <a
+                href="?add-to-cart=7"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="mains">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?q=80&w=800&auto=format&fit=crop"
+                alt="Chipotle‑Glazed Salmon"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Chipotle‑Glazed Salmon</h3>
+              <span class="product-card__price">$34</span>
+              <a
+                href="?add-to-cart=8"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <!-- Desserts -->
+          <div class="product-card" data-category="desserts">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?q=80&w=800&auto=format&fit=crop"
+                alt="Chili Chocolate Tart"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Chili Chocolate Tart</h3>
+              <span class="product-card__price">$14</span>
+              <a
+                href="?add-to-cart=9"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="desserts">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+                alt="Tres Leches Cake"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Tres Leches Cake</h3>
+              <span class="product-card__price">$12</span>
+              <a
+                href="?add-to-cart=10"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="desserts">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop"
+                alt="Mango‑Habanero Sorbet"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Mango‑Habanero Sorbet</h3>
+              <span class="product-card__price">$10</span>
+              <a
+                href="?add-to-cart=11"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <!-- Drinks -->
+          <div class="product-card" data-category="drinks">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?q=80&w=800&auto=format&fit=crop"
+                alt="Smoky Margarita"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Smoky Margarita</h3>
+              <span class="product-card__price">$16</span>
+              <a
+                href="?add-to-cart=12"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="drinks">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+                alt="Velvet Sangria"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Velvet Sangria</h3>
+              <span class="product-card__price">$14</span>
+              <a
+                href="?add-to-cart=13"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+
+          <div class="product-card" data-category="drinks">
+            <div class="product-card__image">
+              <img
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+                alt="Chili Mule"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">Chili Mule</h3>
+              <span class="product-card__price">$15</span>
+              <a
+                href="?add-to-cart=14"
+                class="btn btn--primary product-card__add-to-cart"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer" id="siteFooter">
+      <div class="site-footer__container">
+        <div class="site-footer__grid">
+          <div class="site-footer__col site-footer__col--about">
+            <a href="index.html" class="site-footer__logo">
+              <span class="site-footer__logo-icon"
+                ><i class="fa-solid fa-pepper-hot"></i
+              ></span>
+              <span class="site-footer__logo-text"
+                >Velvet<span class="site-footer__logo-accent">Chili</span></span
+              >
+            </a>
+            <p class="site-footer__desc">
+              A modern dining experience built around the soul of the chili
+              pepper. Slow‑cooked, bold, and unforgettable.
+            </p>
+            <div class="site-footer__social">
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="TripAdvisor"
+                ><i class="fa-brands fa-tripadvisor"></i
+              ></a>
+            </div>
+          </div>
+          <div class="site-footer__col site-footer__col--links">
+            <h4 class="site-footer__heading">Quick Links</h4>
+            <ul class="site-footer__links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="menu.html">Our Menu</a></li>
+              <li><a href="index.html#book">Book A Table</a></li>
+              <li><a href="index.html#testimonials">Reviews</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col site-footer__col--contact">
+            <h4 class="site-footer__heading">Contact</h4>
+            <ul class="site-footer__contact">
+              <li>
+                <i class="fa-solid fa-location-dot"></i
+                ><span
+                  >427 Spice Avenue,<br />Gastronomy District, NY 10012</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i
+                ><a href="tel:+15551234567">(555) 123-4567</a>
+              </li>
+              <li>
+                <i class="fa-regular fa-envelope"></i
+                ><a href="mailto:hello@velvetchili.com"
+                  >hello@velvetchili.com</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="site-footer__col site-footer__col--hours">
+            <h4 class="site-footer__heading">Hours</h4>
+            <ul class="site-footer__hours">
+              <li><span>Mon – Thu</span><span>5 PM – 10 PM</span></li>
+              <li><span>Friday</span><span>5 PM – 11 PM</span></li>
+              <li><span>Saturday</span><span>12 PM – 11 PM</span></li>
+              <li><span>Sunday</span><span>12 PM – 9 PM</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <div class="footer-content">
+            <p>
+              &copy; 2026 Velvet Chili — Where Warmth Meets Flavor. All rights
+              reserved.
+            </p>
+            <div class="footer-links">
+              <a href="#">Privacy</a>
+              <a href="#">Accessibility</a>
+              <a href="#">Careers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JS Files ===== -->
+    <script src="main.js"></script>
+    <script>
+      // Simple category filter script (can be added to main.js later)
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const menuItems = document.querySelectorAll("#menuGrid .product-card");
+
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const filter = this.getAttribute("data-filter");
+
+            // Update active class
+            filterButtons.forEach((b) =>
+              b.classList.remove("filter-btn--active"),
+            );
+            this.classList.add("filter-btn--active");
+
+            // Show/hide items
+            menuItems.forEach((item) => {
+              if (
+                filter === "all" ||
+                item.getAttribute("data-category") === filter
+              ) {
+                item.style.display = "flex"; // show card
+              } else {
+                item.style.display = "none"; // hide card
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

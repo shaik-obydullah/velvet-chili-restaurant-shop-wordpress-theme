@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velvet Chili Restaurant</title>
+
+    <!-- ===== CSS Files ===== -->
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="theme.css" />
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===== Font Awesome for icons ===== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ===================== Header / Navbar ===================== -->
+    <header class="site-header" id="siteHeader">
+      <div class="header__container">
+        <!-- Logo -->
+        <a href="#" class="header__logo" aria-label="Velvet Chili Home">
+          <span class="logo__icon">
+            <i class="fa-solid fa-pepper-hot"></i>
+          </span>
+          <span class="logo__text">
+            Velvet<span class="logo__text--accent">Chili</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="nav nav--desktop"
+          id="desktopNav"
+          aria-label="Main navigation"
+        >
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link nav__link--active">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">About</a>
+            </li>
+            <li class="nav__item">
+              <a href="#menu" class="nav__link">Our Menu</a>
+            </li>
+            <li class="nav__item">
+              <a href="#book" class="nav__link nav__link--cta">Book A Table</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Hamburger Toggle Button (Mobile) -->
+        <button
+          class="hamburger"
+          id="hamburgerBtn"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Overlay -->
+      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav__backdrop"></div>
+        <nav class="mobile-nav__panel" aria-label="Mobile navigation">
+          <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+              <a href="#home" class="mobile-nav__link mobile-nav__link--active"
+                >Home</a
+              >
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#about" class="mobile-nav__link">About</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#menu" class="mobile-nav__link">Our Menu</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#book" class="mobile-nav__link mobile-nav__link--cta"
+                >Book A Table</a
+              >
+            </li>
+          </ul>
+
+          <!-- Mobile contact info -->
+          <div class="mobile-nav__info">
+            <p class="mobile-nav__phone">
+              <i class="fa-solid fa-phone"></i> (555) 123-4567
+            </p>
+            <p class="mobile-nav__hours">
+              <i class="fa-regular fa-clock"></i> Tue–Sun &nbsp;5pm–11pm
+            </p>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- ========== Contact Page ========== -->
+    <section class="contact-page" id="contact">
+      <div class="contact-page__container">
+        <!-- Section header -->
+        <div class="contact-page__header text-center">
+          <span class="contact-page__kicker">Get In Touch</span>
+          <h2 class="contact-page__title">Contact Us</h2>
+          <p class="contact-page__subtitle">
+            We'd love to hear from you. Reach out for reservations, private
+            events, or just to say hello.
+          </p>
+        </div>
+
+        <!-- Two‑column grid -->
+        <div class="contact-page__grid">
+          <!-- Left: Contact form -->
+          <div class="contact-page__form">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="contact-form__group">
+                <label for="contactName"
+                  >Full Name <span class="required-star">*</span></label
+                >
+                <input
+                  type="text"
+                  id="contactName"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="contact-form__group">
+                <label for="contactEmail"
+                  >Email Address <span class="required-star">*</span></label
+                >
+                <input
+                  type="email"
+                  id="contactEmail"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="contact-form__group">
+                <label for="contactSubject">Subject</label>
+                <input
+                  type="text"
+                  id="contactSubject"
+                  name="subject"
+                  placeholder="How can we help?"
+                />
+              </div>
+              <div class="contact-form__group contact-form__group--full">
+                <label for="contactMessage"
+                  >Message <span class="required-star">*</span></label
+                >
+                <textarea
+                  id="contactMessage"
+                  name="message"
+                  placeholder="Your message..."
+                  required
+                  rows="5"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn--primary contact-form__submit"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Contact info + Map -->
+          <div class="contact-page__info">
+            <div class="contact-info">
+              <h3 class="contact-info__title">Velvet Chili</h3>
+              <ul class="contact-info__list">
+                <li>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span>427 Spice Avenue, Gastronomy District, NY 10012</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+15551234567">(555) 123-4567</a>
+                </li>
+                <li>
+                  <i class="fa-regular fa-envelope"></i>
+                  <a href="mailto:hello@velvetchili.com"
+                    >hello@velvetchili.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="contact-map">
+              <!-- Replace this image with a real Google Maps iframe -->
+              <img
+                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1933&auto=format&fit=crop"
+                alt="Map to Velvet Chili"
+                loading="lazy"
+              />
+              <div class="contact-map__overlay">
+                <span>📍 Find us on Google Maps</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
+    <footer class="site-footer" id="siteFooter">
+      <div class="site-footer__container">
+        <div class="site-footer__grid">
+          <!-- Column 1: About -->
+          <div class="site-footer__col site-footer__col--about">
+            <a href="#" class="site-footer__logo">
+              <span class="site-footer__logo-icon"
+                ><i class="fa-solid fa-pepper-hot"></i
+              ></span>
+              <span class="site-footer__logo-text"
+                >Velvet<span class="site-footer__logo-accent">Chili</span></span
+              >
+            </a>
+            <p class="site-footer__desc">
+              A modern dining experience built around the soul of the chili
+              pepper. Slow‑cooked, bold, and unforgettable.
+            </p>
+            <div class="site-footer__social">
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="TripAdvisor"
+                ><i class="fa-brands fa-tripadvisor"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="site-footer__col site-footer__col--links">
+            <h4 class="site-footer__heading">Quick Links</h4>
+            <ul class="site-footer__links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#menu">Our Menu</a></li>
+              <li><a href="#book">Book A Table</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact -->
+          <div class="site-footer__col site-footer__col--contact">
+            <h4 class="site-footer__heading">Contact</h4>
+            <ul class="site-footer__contact">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span
+                  >427 Spice Avenue,<br />Gastronomy District, NY 10012</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+15551234567">(555) 123-4567</a>
+              </li>
+              <li>
+                <i class="fa-regular fa-envelope"></i>
+                <a href="mailto:hello@velvetchili.com">hello@velvetchili.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Opening Hours -->
+          <div class="site-footer__col site-footer__col--hours">
+            <h4 class="site-footer__heading">Hours</h4>
+            <ul class="site-footer__hours">
+              <li><span>Mon – Thu</span><span>5 PM – 10 PM</span></li>
+              <li><span>Friday</span><span>5 PM – 11 PM</span></li>
+              <li><span>Saturday</span><span>12 PM – 11 PM</span></li>
+              <li><span>Sunday</span><span>12 PM – 9 PM</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="site-footer__bottom">
+          <div class="footer-content">
+            <p>
+              &copy; 2026 Velvet Chili — Where Warmth Meets Flavor. All rights
+              reserved.
+            </p>
+            <div class="footer-links">
+              <a href="#">Privacy</a>
+              <a href="#">Accessibility</a>
+              <a href="#">Careers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JS File ===== -->
+    <script src="main.js"></script>
+  </body>
+</html>

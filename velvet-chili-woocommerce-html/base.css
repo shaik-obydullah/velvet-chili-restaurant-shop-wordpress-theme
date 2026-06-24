@@ -1,0 +1,148 @@
+/*
+ * Velvet Chili – Base Stylesheet
+ * ================================
+ * Table of Contents:
+ *   1. CSS Custom Properties (Design Tokens)
+ *   2. Global Reset
+ *   3. Typography Defaults
+ *   4. Global Element Styles (a, ul, img, button)
+ *   5. Utility Classes
+ *   6. Scrollbar Styling
+ */
+
+/* ============================================================
+   BASE.CSS – Reset, Variables, Global Rules
+   ============================================================ */
+
+/* ---------- CSS Custom Properties (Design Tokens) ---------- */
+:root {
+  /* Color Palette */
+  --color-chili-red: #b23a2d;
+  --color-velvet-burgundy: #6f2b30;
+  --color-ember-orange: #d96c4a;
+  --color-charcoal: #2b2b2b;
+  --color-soft-black: #1a1a1a;
+  --color-cream: #f9f5f0;
+  --color-warm-white: #fdfaf7;
+  --color-light-taupe: #e7ded6;
+  --color-text-primary: #2b2b2b;
+  --color-text-secondary: #5c4f4a;
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  /* Typography */
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Montserrat", "Helvetica Neue", sans-serif;
+
+  /* Spacing & Sizing */
+  --header-height: 90px;
+  --header-height-mobile: 70px;
+  --container-max: 1400px;
+  --section-padding: 5rem 2rem;
+  --section-padding-mobile: 4rem 1.5rem;
+
+  /* Transitions */
+  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.2s ease;
+}
+
+/* ---------- Global Reset ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-warm-white);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ---------- Typography Defaults ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-soft-black);
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ---------- Utility Classes ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* ---------- Scrollbar Styling (optional) ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-light-taupe);
+  border-radius: 4px;
+}

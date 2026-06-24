@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velvet Chili Restaurant</title>
+
+    <!-- ===== CSS Files ===== -->
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="theme.css" />
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ===== Font Awesome for icons ===== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ===================== Header / Navbar ===================== -->
+    <header class="site-header" id="siteHeader">
+      <div class="header__container">
+        <!-- Logo -->
+        <a href="#" class="header__logo" aria-label="Velvet Chili Home">
+          <span class="logo__icon">
+            <i class="fa-solid fa-pepper-hot"></i>
+          </span>
+          <span class="logo__text">
+            Velvet<span class="logo__text--accent">Chili</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="nav nav--desktop"
+          id="desktopNav"
+          aria-label="Main navigation"
+        >
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link nav__link--active">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">About</a>
+            </li>
+            <li class="nav__item">
+              <a href="#menu" class="nav__link">Our Menu</a>
+            </li>
+            <li class="nav__item">
+              <a href="#book" class="nav__link nav__link--cta">Book A Table</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Hamburger Toggle Button (Mobile) -->
+        <button
+          class="hamburger"
+          id="hamburgerBtn"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Overlay -->
+      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav__backdrop"></div>
+        <nav class="mobile-nav__panel" aria-label="Mobile navigation">
+          <ul class="mobile-nav__list">
+            <li class="mobile-nav__item">
+              <a href="#home" class="mobile-nav__link mobile-nav__link--active"
+                >Home</a
+              >
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#about" class="mobile-nav__link">About</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#menu" class="mobile-nav__link">Our Menu</a>
+            </li>
+            <li class="mobile-nav__item">
+              <a href="#book" class="mobile-nav__link mobile-nav__link--cta"
+                >Book A Table</a
+              >
+            </li>
+          </ul>
+
+          <!-- Mobile contact info -->
+          <div class="mobile-nav__info">
+            <p class="mobile-nav__phone">
+              <i class="fa-solid fa-phone"></i> (555) 123-4567
+            </p>
+            <p class="mobile-nav__hours">
+              <i class="fa-regular fa-clock"></i> Tue–Sun &nbsp;5pm–11pm
+            </p>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Static Featured Image Section -->
+    <!-- <section class="slider-static" aria-label="Signature dish">
+      <div
+        class="slider-static__bg"
+        style="
+          background-image: url(&quot;https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop&quot;);
+        "
+      ></div>
+      <div class="slider-static__overlay"></div>
+      <div class="slider-static__content">
+        <h2 class="slider-static__title">Velvet Slow‑Braised Chili</h2>
+        <p class="slider-static__subtitle">
+          Our signature dish, simmered for 12 hours with smoked ancho & guajillo
+        </p>
+      </div>
+    </section> -->
+
+    <!-- ========== Dynamic Slider ========== -->
+    <section
+      class="slider"
+      id="featuredSlider"
+      aria-roledescription="carousel"
+      aria-label="Featured dishes"
+    >
+      <!-- Slides -->
+      <div class="slider__slides" id="sliderSlides">
+        <!-- Slide 1 -->
+        <div
+          class="slider__slide slider__slide--active"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="1 of 3"
+        >
+          <div
+            class="slider__bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&quot;);
+            "
+          ></div>
+          <div class="slider__overlay"></div>
+          <div class="slider__content">
+            <h2 class="slider__title">Dry‑Aged Ribeye</h2>
+            <p class="slider__subtitle">
+              Chili‑cocoa rub & roasted bone marrow butter
+            </p>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div
+          class="slider__slide"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="2 of 3"
+        >
+          <div
+            class="slider__bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop&quot;);
+            "
+          ></div>
+          <div class="slider__overlay"></div>
+          <div class="slider__content">
+            <h2 class="slider__title">Velvet Slow‑Braised Chili</h2>
+            <p class="slider__subtitle">
+              Simmered 12 hours with smoked ancho & guajillo
+            </p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div
+          class="slider__slide"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="3 of 3"
+        >
+          <div
+            class="slider__bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1559329007-40df8a9345d8?q=80&w=1887&auto=format&fit=crop&quot;);
+            "
+          ></div>
+          <div class="slider__overlay"></div>
+          <div class="slider__content">
+            <h2 class="slider__title">Chili Chocolate Tart</h2>
+            <p class="slider__subtitle">
+              Dark ganache with ancho heat & candied orange
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrows -->
+      <button
+        class="slider__arrow slider__arrow--left"
+        id="sliderPrev"
+        aria-label="Previous slide"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        class="slider__arrow slider__arrow--right"
+        id="sliderNext"
+        aria-label="Next slide"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Dots -->
+      <div class="slider__dots" id="sliderDots" aria-hidden="true">
+        <button class="slider__dot slider__dot--active" data-slide="0"></button>
+        <button class="slider__dot" data-slide="1"></button>
+        <button class="slider__dot" data-slide="2"></button>
+      </div>
+    </section>
+
+    <!-- ========== Menu Highlight ========== -->
+    <section class="menu-highlight" id="menu">
+      <div class="menu-highlight__image">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop"
+          alt="Velvet Chili menu dishes"
+          loading="lazy"
+        />
+      </div>
+      <div class="menu-highlight__text">
+        <span class="menu-highlight__kicker">Our Menu</span>
+        <h2 class="menu-highlight__title">Crafted with Fire & Spice</h2>
+        <p class="menu-highlight__subtitle">
+          From small plates to slow‑braised classics
+        </p>
+        <p class="menu-highlight__body">
+          Every dish at Velvet Chili is built around the deep, smoky warmth of
+          carefully selected chilies. Explore bold appetisers, hearty mains, and
+          desserts kissed with heat – a menu designed to surprise and comfort in
+          equal measure.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== Featured Menu Preview (WooCommerce‑Ready, Dynamic Grid) ========== -->
+    <section class="featured-products" id="featured-products">
+      <div class="featured-products__container">
+        <!-- Section header -->
+        <div class="featured-products__header text-center">
+          <span class="featured-products__kicker">From Our Kitchen</span>
+          <h2 class="featured-products__title">Velvet Chili Signatures</h2>
+          <p class="featured-products__subtitle">
+            Every dish is a story of fire, spice, and slow‑crafted comfort.
+          </p>
+        </div>
+
+        <!-- WooCommerce Product Grid (dynamic – handles any number) -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Product Card 1 (visible) -->
+          <div class="product-card">
+            <div class="product-card__image">
+              <a href="#">
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+                  alt="Smoked Ancho Ribeye"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">
+                <a href="#">Smoked Ancho Ribeye</a>
+              </h3>
+              <span class="product-card__price">$48</span>
+              <a
+                href="?add-to-cart=1"
+                class="btn btn--primary product-card__add-to-cart"
+              >
+                Add to Cart
+              </a>
+            </div>
+          </div>
+
+          <!-- Product Card 2 (visible) -->
+          <div class="product-card">
+            <div class="product-card__image">
+              <a href="#">
+                <img
+                  src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+                  alt="Velvet Braised Short Rib"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">
+                <a href="#">Velvet Braised Short Rib</a>
+              </h3>
+              <span class="product-card__price">$52</span>
+              <a
+                href="?add-to-cart=2"
+                class="btn btn--primary product-card__add-to-cart"
+              >
+                Add to Cart
+              </a>
+            </div>
+          </div>
+
+          <!-- Product Card 3 (visible) -->
+          <div class="product-card">
+            <div class="product-card__image">
+              <a href="#">
+                <img
+                  src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop"
+                  alt="Fire-Roasted Poblano Relleno"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">
+                <a href="#">Fire‑Roasted Poblano Relleno</a>
+              </h3>
+              <span class="product-card__price">$38</span>
+              <a
+                href="?add-to-cart=3"
+                class="btn btn--primary product-card__add-to-cart"
+              >
+                Add to Cart
+              </a>
+            </div>
+          </div>
+
+          <!-- Product Card 4 (visible) -->
+          <div class="product-card">
+            <div class="product-card__image">
+              <a href="#">
+                <img
+                  src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?q=80&w=800&auto=format&fit=crop"
+                  alt="Chili Chocolate Tart"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">
+                <a href="#">Chili Chocolate Tart</a>
+              </h3>
+              <span class="product-card__price">$18</span>
+              <a
+                href="?add-to-cart=4"
+                class="btn btn--primary product-card__add-to-cart"
+              >
+                Add to Cart
+              </a>
+            </div>
+          </div>
+
+          <!-- Additional products (hidden by default, will be shown on "Load More") -->
+          <div class="product-card product-card--hidden">
+            <div class="product-card__image">
+              <a href="#">
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+                  alt="Chipotle‑Glazed Salmon"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">
+                <a href="#">Chipotle‑Glazed Salmon</a>
+              </h3>
+              <span class="product-card__price">$34</span>
+              <a
+                href="?add-to-cart=5"
+                class="btn btn--primary product-card__add-to-cart"
+              >
+                Add to Cart
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card product-card--hidden">
+            <div class="product-card__image">
+              <a href="#">
+                <img
+                  src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+                  alt="Guajillo Hummus"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">
+                <a href="#">Guajillo Hummus</a>
+              </h3>
+              <span class="product-card__price">$12</span>
+              <a
+                href="?add-to-cart=6"
+                class="btn btn--primary product-card__add-to-cart"
+              >
+                Add to Cart
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Load More button (only visible if hidden products exist) -->
+        <div class="featured-products__footer text-center">
+          <button
+            id="loadMoreProducts"
+            class="btn btn--primary featured-products__load-more"
+            style="display: none"
+          >
+            Load More
+          </button>
+          <a href="/menu" class="btn btn--primary featured-products__cta"
+            >View Full Menu</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Testimonials ========== -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="testimonials-section__bg">
+        <!-- Replace with your own background image -->
+        <img
+          src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop"
+          alt=""
+          aria-hidden="true"
+        />
+      </div>
+      <div class="testimonials-section__overlay"></div>
+
+      <div class="testimonials-section__container">
+        <div class="testimonials-section__row">
+          <div class="testimonials-section__col">
+            <div class="testimonials-box">
+              <!-- Quote icon (using Font Awesome) -->
+              <div class="testimonials-box__icon">
+                <i class="fa-solid fa-quote-right"></i>
+              </div>
+
+              <h2 class="testimonials-box__title">What Our Customers Say</h2>
+
+              <!-- Testimonial carousel -->
+              <div class="testimonial-carousel" id="testimonialCarousel">
+                <div
+                  class="testimonial-carousel__slides"
+                  id="testimonialSlides"
+                >
+                  <!-- Slide 1 -->
+                  <div
+                    class="testimonial-carousel__slide testimonial-carousel__slide--active"
+                  >
+                    <blockquote class="testimonial-carousel__quote">
+                      “The ancho ribeye was life‑changing. Perfect heat,
+                      incredible depth – I’ve never tasted anything like it.
+                      Velvet Chili is a gem.”
+                    </blockquote>
+                    <div class="testimonial-carousel__author">
+                      <span class="testimonial-carousel__name"
+                        >James Delacroix</span
+                      >
+                      <span class="testimonial-carousel__role"
+                        >— Food Critic</span
+                      >
+                    </div>
+                  </div>
+                  <!-- Slide 2 -->
+                  <div class="testimonial-carousel__slide">
+                    <blockquote class="testimonial-carousel__quote">
+                      “From the smoky pasilla soup to the chocolate tart, every
+                      bite was a masterclass in balance. The atmosphere is as
+                      warm as the spices.”
+                    </blockquote>
+                    <div class="testimonial-carousel__author">
+                      <span class="testimonial-carousel__name"
+                        >Elena Rossi</span
+                      >
+                      <span class="testimonial-carousel__role"
+                        >— Regular Guest</span
+                      >
+                    </div>
+                  </div>
+                  <!-- Slide 3 -->
+                  <div class="testimonial-carousel__slide">
+                    <blockquote class="testimonial-carousel__quote">
+                      “Booked the private dining room for a birthday. The team
+                      went above and beyond – the short rib was
+                      melt‑in‑your‑mouth perfection.”
+                    </blockquote>
+                    <div class="testimonial-carousel__author">
+                      <span class="testimonial-carousel__name"
+                        >Marcus & Sofia Lee</span
+                      >
+                      <span class="testimonial-carousel__role"
+                        >— Celebrated a special occasion</span
+                      >
+                    </div>
+                  </div>
+                  <!-- Slide 4 -->
+                  <div class="testimonial-carousel__slide">
+                    <blockquote class="testimonial-carousel__quote">
+                      “The best chili‑based menu I’ve ever encountered.
+                      Sophisticated, surprising, and utterly comforting. We’ll
+                      be back every month.”
+                    </blockquote>
+                    <div class="testimonial-carousel__author">
+                      <span class="testimonial-carousel__name"
+                        >Claire Thompson</span
+                      >
+                      <span class="testimonial-carousel__role"
+                        >— Food Blogger</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Dots navigation -->
+                <div class="testimonial-carousel__dots" id="testimonialDots">
+                  <button
+                    class="testimonial-carousel__dot testimonial-carousel__dot--active"
+                    data-slide="0"
+                  ></button>
+                  <button
+                    class="testimonial-carousel__dot"
+                    data-slide="1"
+                  ></button>
+                  <button
+                    class="testimonial-carousel__dot"
+                    data-slide="2"
+                  ></button>
+                  <button
+                    class="testimonial-carousel__dot"
+                    data-slide="3"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Opening Hours & Reservation ========== -->
+    <section class="reservation" id="book">
+      <div class="reservation__container">
+        <!-- Section header -->
+        <div class="reservation__header text-center">
+          <span class="reservation__kicker">Reservations</span>
+          <h2 class="reservation__title">Book Your Table</h2>
+          <p class="reservation__subtitle">
+            Secure your dining experience. We look forward to welcoming you.
+          </p>
+        </div>
+
+        <!-- Two‑column wrapper -->
+        <div class="reservation__grid">
+          <!-- Left: Opening Hours -->
+          <div class="reservation__hours hours-panel">
+            <div class="hours-panel__icon">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <h3 class="hours-panel__title">Opening Hours</h3>
+            <ul class="hours-panel__list">
+              <li class="hours-panel__item">
+                <span class="hours-panel__day">Monday – Thursday</span>
+                <span class="hours-panel__time">5 PM – 10 PM</span>
+              </li>
+              <li class="hours-panel__item">
+                <span class="hours-panel__day">Friday</span>
+                <span class="hours-panel__time">5 PM – 11 PM</span>
+              </li>
+              <li class="hours-panel__item">
+                <span class="hours-panel__day">Saturday</span>
+                <span class="hours-panel__time">12 PM – 11 PM</span>
+              </li>
+              <li class="hours-panel__item">
+                <span class="hours-panel__day">Sunday</span>
+                <span class="hours-panel__time">12 PM – 9 PM</span>
+              </li>
+            </ul>
+            <p class="hours-panel__note">
+              Last reservation 30 minutes before closing
+            </p>
+          </div>
+
+          <!-- Right: Booking Form -->
+          <div class="reservation__form booking-panel">
+            <form class="booking-form" id="bookingForm" novalidate>
+              <div class="booking-form__group">
+                <label for="bookingName"
+                  >Full Name <span class="required-star">*</span></label
+                >
+                <input
+                  type="text"
+                  id="bookingName"
+                  name="name"
+                  placeholder="John Doe"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+              <div class="booking-form__group">
+                <label for="bookingEmail"
+                  >Email Address <span class="required-star">*</span></label
+                >
+                <input
+                  type="email"
+                  id="bookingEmail"
+                  name="email"
+                  placeholder="john@example.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="booking-form__group">
+                <label for="bookingPhone"
+                  >Phone Number <span class="required-star">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="bookingPhone"
+                  name="phone"
+                  placeholder="+1 (555) 000-0000"
+                  required
+                  autocomplete="tel"
+                />
+              </div>
+              <div class="booking-form__group">
+                <label for="bookingParty"
+                  >Party Size <span class="required-star">*</span></label
+                >
+                <select id="bookingParty" name="party" required>
+                  <option value="" disabled selected>Select guests</option>
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="7">7 Guests</option>
+                  <option value="8">8+ Guests</option>
+                </select>
+              </div>
+              <div class="booking-form__group">
+                <label for="bookingDate"
+                  >Date <span class="required-star">*</span></label
+                >
+                <input
+                  type="date"
+                  id="bookingDate"
+                  name="date"
+                  required
+                  min="2026-05-23"
+                />
+              </div>
+              <div class="booking-form__group">
+                <label for="bookingTime"
+                  >Time <span class="required-star">*</span></label
+                >
+                <select id="bookingTime" name="time" required>
+                  <option value="" disabled selected>Select time</option>
+                  <option value="17:00">5:00 PM</option>
+                  <option value="17:30">5:30 PM</option>
+                  <option value="18:00">6:00 PM</option>
+                  <option value="18:30">6:30 PM</option>
+                  <option value="19:00">7:00 PM</option>
+                  <option value="19:30">7:30 PM</option>
+                  <option value="20:00">8:00 PM</option>
+                  <option value="20:30">8:30 PM</option>
+                  <option value="21:00">9:00 PM</option>
+                </select>
+              </div>
+              <div class="booking-form__group booking-form__group--full">
+                <label for="bookingNotes">Special Requests</label>
+                <textarea
+                  id="bookingNotes"
+                  name="notes"
+                  placeholder="Allergies, dietary needs, special occasions..."
+                  spellcheck="false"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn--primary booking-form__submit"
+              >
+                Confirm Reservation
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== Footer ========== -->
+    <footer class="site-footer" id="siteFooter">
+      <div class="site-footer__container">
+        <div class="site-footer__grid">
+          <!-- Column 1: About -->
+          <div class="site-footer__col site-footer__col--about">
+            <a href="#" class="site-footer__logo">
+              <span class="site-footer__logo-icon"
+                ><i class="fa-solid fa-pepper-hot"></i
+              ></span>
+              <span class="site-footer__logo-text"
+                >Velvet<span class="site-footer__logo-accent">Chili</span></span
+              >
+            </a>
+            <p class="site-footer__desc">
+              A modern dining experience built around the soul of the chili
+              pepper. Slow‑cooked, bold, and unforgettable.
+            </p>
+            <div class="site-footer__social">
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="TripAdvisor"
+                ><i class="fa-brands fa-tripadvisor"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="site-footer__col site-footer__col--links">
+            <h4 class="site-footer__heading">Quick Links</h4>
+            <ul class="site-footer__links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#menu">Our Menu</a></li>
+              <li><a href="#book">Book A Table</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact -->
+          <div class="site-footer__col site-footer__col--contact">
+            <h4 class="site-footer__heading">Contact</h4>
+            <ul class="site-footer__contact">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span
+                  >427 Spice Avenue,<br />Gastronomy District, NY 10012</span
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+15551234567">(555) 123-4567</a>
+              </li>
+              <li>
+                <i class="fa-regular fa-envelope"></i>
+                <a href="mailto:hello@velvetchili.com">hello@velvetchili.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Opening Hours -->
+          <div class="site-footer__col site-footer__col--hours">
+            <h4 class="site-footer__heading">Hours</h4>
+            <ul class="site-footer__hours">
+              <li><span>Mon – Thu</span><span>5 PM – 10 PM</span></li>
+              <li><span>Friday</span><span>5 PM – 11 PM</span></li>
+              <li><span>Saturday</span><span>12 PM – 11 PM</span></li>
+              <li><span>Sunday</span><span>12 PM – 9 PM</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="site-footer__bottom">
+          <div class="footer-content">
+            <p>
+              &copy; 2026 Velvet Chili — Where Warmth Meets Flavor. All rights
+              reserved.
+            </p>
+            <div class="footer-links">
+              <a href="#">Privacy</a>
+              <a href="#">Accessibility</a>
+              <a href="#">Careers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JS File ===== -->
+    <script src="main.js"></script>
+  </body>
+</html>
