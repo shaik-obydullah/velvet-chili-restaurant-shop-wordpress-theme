@@ -1,34 +1,35 @@
 <?php
 /**
  * Template Name: About Page
- * Uses 'obirc_about_page' CPT (single post) for dynamic content.
+ * Uses 'obirsc_about_page' CPT (single post) for dynamic content.
  * Falls back to static HTML when plugin inactive or data missing.
  */
 
 get_header();
 
 // -------------------------------------------------------------
-// Static fallback HTML (your original about section)
+// 1. Define static fallback
 // -------------------------------------------------------------
-function obirc_static_about_page() {
+function vcrs_static_about_page() {
     ?>
 <section class="about-page" id="about">
     <div class="about-page__container">
         <div class="about-page__header text-center">
-            <span class="about-page__kicker"><?php esc_html_e( 'Our Story', 'obydullah-restaurant' ); ?></span>
+            <span class="about-page__kicker"><?php esc_html_e( 'Our Story', 'velvet-chili-restaurant-shop' ); ?></span>
             <h2 class="about-page__title">
-                <?php esc_html_e( 'The Heart of Obydullah Restaurant', 'obydullah-restaurant' ); ?></h2>
+                <?php esc_html_e( 'The Heart of Obydullah Restaurant', 'velvet-chili-restaurant-shop' ); ?></h2>
         </div>
         <div class="about-page__grid">
             <div class="about-page__text">
                 <h3 class="about-page__subtitle">
-                    <?php esc_html_e( 'Meet Chef Elena Vasquez', 'obydullah-restaurant' ); ?></h3>
+                    <?php esc_html_e( 'Meet Chef Elena Vasquez', 'velvet-chili-restaurant-shop' ); ?></h3>
                 <p class="about-page__body">
-                    <?php esc_html_e( 'With over twenty‑five years of experience, Chef Elena has honed her craft in the bustling markets of Oaxaca and the refined kitchens of Europe. Her passion lies in transforming humble chili peppers into complex, soul‑warming dishes that surprise and delight. Every plate she creates tells a story of fire, patience, and a deep respect for ingredients.', 'obydullah-restaurant' ); ?>
+                    <?php esc_html_e( 'With over twenty‑five years of experience, Chef Elena has honed her craft in the bustling markets of Oaxaca and the refined kitchens of Europe. Her passion lies in transforming humble chili peppers into complex, soul‑warming dishes that surprise and delight. Every plate she creates tells a story of fire, patience, and a deep respect for ingredients.', 'velvet-chili-restaurant-shop' ); ?>
                 </p>
-                <h3 class="about-page__subtitle"><?php esc_html_e( 'Our Philosophy', 'obydullah-restaurant' ); ?></h3>
+                <h3 class="about-page__subtitle">
+                    <?php esc_html_e( 'Our Philosophy', 'velvet-chili-restaurant-shop' ); ?></h3>
                 <p class="about-page__body">
-                    <?php esc_html_e( 'At Obydullah Restaurant, we believe that great food is about balance – heat and sweetness, tradition and innovation, comfort and elegance. We source our chilies from small family farms, slow‑cook our meats for hours, and treat every guest like family. Dining here is not just a meal; it’s a journey through the rich tapestry of chili culture.', 'obydullah-restaurant' ); ?>
+                    <?php esc_html_e( 'At Obydullah Restaurant, we believe that great food is about balance – heat and sweetness, tradition and innovation, comfort and elegance. We source our chilies from small family farms, slow‑cook our meats for hours, and treat every guest like family. Dining here is not just a meal; it\'s a journey through the rich tapestry of chili culture.', 'velvet-chili-restaurant-shop' ); ?>
                 </p>
             </div>
             <div class="about-page__slider">
@@ -43,9 +44,9 @@ function obirc_static_about_page() {
                             <div class="event-slider__overlay"></div>
                             <div class="event-slider__content">
                                 <h3 class="event-slider__title">
-                                    <?php esc_html_e( 'Private Dining', 'obydullah-restaurant' ); ?></h3>
+                                    <?php esc_html_e( 'Private Dining', 'velvet-chili-restaurant-shop' ); ?></h3>
                                 <p class="event-slider__subtitle">
-                                    <?php esc_html_e( 'Intimate celebrations in our candlelit cellar', 'obydullah-restaurant' ); ?>
+                                    <?php esc_html_e( 'Intimate celebrations in our candlelit cellar', 'velvet-chili-restaurant-shop' ); ?>
                                 </p>
                             </div>
                         </div>
@@ -56,9 +57,9 @@ function obirc_static_about_page() {
                             <div class="event-slider__overlay"></div>
                             <div class="event-slider__content">
                                 <h3 class="event-slider__title">
-                                    <?php esc_html_e( 'Wine Pairing Nights', 'obydullah-restaurant' ); ?></h3>
+                                    <?php esc_html_e( 'Wine Pairing Nights', 'velvet-chili-restaurant-shop' ); ?></h3>
                                 <p class="event-slider__subtitle">
-                                    <?php esc_html_e( 'Every Thursday with our sommelier', 'obydullah-restaurant' ); ?>
+                                    <?php esc_html_e( 'Every Thursday with our sommelier', 'velvet-chili-restaurant-shop' ); ?>
                                 </p>
                             </div>
                         </div>
@@ -69,9 +70,10 @@ function obirc_static_about_page() {
                             <div class="event-slider__overlay"></div>
                             <div class="event-slider__content">
                                 <h3 class="event-slider__title">
-                                    <?php esc_html_e( 'Chili Masterclass', 'obydullah-restaurant' ); ?></h3>
+                                    <?php esc_html_e( 'Chili Masterclass', 'velvet-chili-restaurant-shop' ); ?></h3>
                                 <p class="event-slider__subtitle">
-                                    <?php esc_html_e( 'Learn the art of smoke & spice', 'obydullah-restaurant' ); ?></p>
+                                    <?php esc_html_e( 'Learn the art of smoke & spice', 'velvet-chili-restaurant-shop' ); ?>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -92,43 +94,50 @@ function obirc_static_about_page() {
 <?php
 }
 
-// If plugin not active → static fallback
-if ( ! defined( 'OBIRC_VERSION' ) ) {
-    obirc_static_about_page();
+// -------------------------------------------------------------
+// 2. Check if plugin is active
+// -------------------------------------------------------------
+if ( ! defined( 'OBIRSC_VERSION' ) ) {
+    vcrs_static_about_page();
     get_footer();
     return;
 }
 
 // -------------------------------------------------------------
-// 1. Get About Page data (from obirc_about_page CPT)
+// 3. Get About Page data from CPT
 // -------------------------------------------------------------
 $about_posts = get_posts( array(
-    'post_type'      => 'obirc_about_page',
+    'post_type'      => 'obirsc_about_page',
     'posts_per_page' => 1,
     'post_status'    => 'publish',
 ) );
 
 if ( empty( $about_posts ) ) {
-    obirc_static_about_page();
+    vcrs_static_about_page();
     get_footer();
     return;
 }
 
 $about_id = $about_posts[0]->ID;
-$kicker   = get_post_meta( $about_id, 'about_kicker', true );
-$title    = get_post_meta( $about_id, 'about_title', true );
-$chef     = get_post_meta( $about_id, 'about_chef_story', true );
-$phil     = get_post_meta( $about_id, 'about_philosophy', true );
-$slides   = get_post_meta( $about_id, 'about_slides', true );
+
+// Get meta data (with correct 'obirsc_' prefix)
+$kicker = get_post_meta( $about_id, 'obirsc_about_kicker', true );
+$title  = get_post_meta( $about_id, 'obirsc_about_title', true );
+$chef   = get_post_meta( $about_id, 'obirsc_about_chef_story', true );
+$phil   = get_post_meta( $about_id, 'obirsc_about_philosophy', true );
+$slides = get_post_meta( $about_id, 'obirsc_about_slides', true );
 
 // If any required field is empty → static fallback
 if ( empty( $kicker ) || empty( $title ) || empty( $chef ) || empty( $phil ) || empty( $slides ) ) {
-    obirc_static_about_page();
+    vcrs_static_about_page();
     get_footer();
     return;
 }
 ?>
 
+<!-- ============================================================
+     DYNAMIC ABOUT PAGE
+============================================================ -->
 <section class="about-page" id="about">
     <div class="about-page__container">
         <div class="about-page__header text-center">
@@ -140,10 +149,11 @@ if ( empty( $kicker ) || empty( $title ) || empty( $chef ) || empty( $phil ) || 
             <!-- Left column: text (dynamic) -->
             <div class="about-page__text">
                 <h3 class="about-page__subtitle">
-                    <?php esc_html_e( 'Meet Chef Elena Vasquez', 'obydullah-restaurant' ); ?></h3>
+                    <?php esc_html_e( 'Meet Chef Elena Vasquez', 'velvet-chili-restaurant-shop' ); ?></h3>
                 <p class="about-page__body"><?php echo nl2br( esc_html( $chef ) ); ?></p>
 
-                <h3 class="about-page__subtitle"><?php esc_html_e( 'Our Philosophy', 'obydullah-restaurant' ); ?></h3>
+                <h3 class="about-page__subtitle">
+                    <?php esc_html_e( 'Our Philosophy', 'velvet-chili-restaurant-shop' ); ?></h3>
                 <p class="about-page__body"><?php echo nl2br( esc_html( $phil ) ); ?></p>
             </div>
 

@@ -3,15 +3,17 @@
  * Footer Section – fully dynamic from footer_settings CPT
  */
 
-// Helper function for static fallback (to avoid code duplication)
-function obirc_static_footer() {
+// -------------------------------------------------------------
+// 1. Define static fallback (if plugin inactive or no data)
+// -------------------------------------------------------------
+function vcrs_footer_fallback() {
     ?>
 <footer class="site-footer" id="siteFooter">
     <div class="site-footer__container">
         <div class="site-footer__grid">
             <!-- Column 1: About -->
             <div class="site-footer__col site-footer__col--about">
-                <a href="#" class="site-footer__logo">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-footer__logo">
                     <span class="site-footer__logo-icon"><i class="fa-solid fa-pepper-hot"></i></span>
                     <span class="site-footer__logo-text">Obydullah<span
                             class="site-footer__logo-accent">Restaurant</span></span>
@@ -22,12 +24,12 @@ function obirc_static_footer() {
                     <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
                 </div>
             </div>
             <!-- Column 2: Quick Links -->
             <div class="site-footer__col site-footer__col--links">
-                <h4 class="site-footer__heading">Quick Links</h4>
+                <h4 class="site-footer__heading"><?php esc_html_e( 'Quick Links', 'velvet-chili-restaurant-shop' ); ?>
+                </h4>
                 <ul class="site-footer__links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -38,7 +40,7 @@ function obirc_static_footer() {
             </div>
             <!-- Column 3: Contact -->
             <div class="site-footer__col site-footer__col--contact">
-                <h4 class="site-footer__heading">Contact</h4>
+                <h4 class="site-footer__heading"><?php esc_html_e( 'Contact', 'velvet-chili-restaurant-shop' ); ?></h4>
                 <ul class="site-footer__contact">
                     <li><i class="fa-solid fa-location-dot"></i><span>427 Spice Avenue,<br />Gastronomy District, NY
                             10012</span></li>
@@ -47,21 +49,12 @@ function obirc_static_footer() {
                             href="mailto:hello@obydullahrestaurant.com">hello@obydullahrestaurant.com</a></li>
                 </ul>
             </div>
-            <!-- Column 4: Opening Hours -->
-            <div class="site-footer__col site-footer__col--hours">
-                <h4 class="site-footer__heading">Hours</h4>
-                <ul class="site-footer__hours">
-                    <li><span>Mon – Thu</span><span>5 PM – 10 PM</span></li>
-                    <li><span>Friday</span><span>5 PM – 11 PM</span></li>
-                    <li><span>Saturday</span><span>12 PM – 11 PM</span></li>
-                    <li><span>Sunday</span><span>12 PM – 9 PM</span></li>
-                </ul>
-            </div>
         </div>
         <!-- Copyright -->
         <div class="site-footer__bottom">
             <div class="site-footer__copyright">
-                <p>&copy; 2026 Obydullah Restaurant Theme — Where Warmth Meets Flavor. All rights reserved.</p>
+                <p>&copy; <?php echo date( 'Y' ); ?> Obydullah Restaurant Theme — Where Warmth Meets Flavor. All rights
+                    reserved.</p>
             </div>
         </div>
     </div>
@@ -69,38 +62,50 @@ function obirc_static_footer() {
 <?php
 }
 
-// If plugin not active → static footer
-if ( ! defined( 'OBIRC_VERSION' ) ) {
-    obirc_static_footer();
-} else {
-    // Retrieve dynamic data from the Footer Settings CPT
-    $footer_posts = get_posts( array(
-        'post_type'      => 'obirc_footer',
-        'posts_per_page' => 1,
-        'post_status'    => 'publish',
-    ) );
+// -------------------------------------------------------------
+// 2. Check if plugin is active
+// -------------------------------------------------------------
+if ( ! defined( 'OBIRSC_VERSION' ) ) {
+    vcrs_footer_fallback();
+    return;
+}
 
-    if ( empty( $footer_posts ) ) {
-        obirc_static_footer();
-    } else {
-        $footer_id = $footer_posts[0]->ID;
+// -------------------------------------------------------------
+// 3. Get Footer Settings from CPT
+// -------------------------------------------------------------
+$footer_posts = get_posts( array(
+    'post_type'      => 'obirsc_footer',
+    'posts_per_page' => 1,
+    'post_status'    => 'publish',
+) );
 
-        $logo_text   = get_post_meta( $footer_id, 'footer_logo_text', true );
-        $logo_accent = get_post_meta( $footer_id, 'footer_logo_accent', true );
-        $tagline     = get_post_meta( $footer_id, 'footer_tagline', true );
-        $social      = get_post_meta( $footer_id, 'footer_social', true );
-        $address     = get_post_meta( $footer_id, 'footer_address', true );
-        $phone       = get_post_meta( $footer_id, 'footer_phone', true );
-        $email       = get_post_meta( $footer_id, 'footer_email', true );
-        $copyright   = get_post_meta( $footer_id, 'footer_copyright', true );
-        $links       = get_post_meta( $footer_id, 'footer_links', true );
+if ( empty( $footer_posts ) ) {
+    vcrs_footer_fallback();
+    return;
+}
 
-        // Fallbacks (only if needed)
-        $logo_text   = $logo_text ?: 'Obydullah';
-        $logo_accent = $logo_accent ?: 'Restaurant';
-        $tagline     = $tagline ?: 'A modern dining experience built around the soul of the chili pepper. Slow‑cooked, bold, and unforgettable.';
-        $copyright   = $copyright ?: '&copy; ' . date('Y') . ' Obydullah Restaurant Theme. All rights reserved.';
-        ?>
+$footer_id = $footer_posts[0]->ID;
+
+// Retrieve meta fields (all with correct prefix 'obirsc_footer_')
+$logo_text   = get_post_meta( $footer_id, 'obirsc_footer_logo_text', true );
+$logo_accent = get_post_meta( $footer_id, 'obirsc_footer_logo_accent', true );
+$tagline     = get_post_meta( $footer_id, 'obirsc_footer_tagline', true );
+$social      = get_post_meta( $footer_id, 'obirsc_footer_social', true );
+$links       = get_post_meta( $footer_id, 'obirsc_footer_links', true );
+$address     = get_post_meta( $footer_id, 'obirsc_footer_address', true );
+$phone       = get_post_meta( $footer_id, 'obirsc_footer_phone', true );
+$email       = get_post_meta( $footer_id, 'obirsc_footer_email', true );
+$copyright   = get_post_meta( $footer_id, 'obirsc_footer_copyright', true );
+
+// Fallback values (if empty, use the static fallback defaults)
+$logo_text   = $logo_text ?: 'Obydullah';
+$logo_accent = $logo_accent ?: 'Restaurant';
+$tagline     = $tagline ?: 'A modern dining experience built around the soul of the chili pepper. Slow‑cooked, bold, and unforgettable.';
+$copyright   = $copyright ?: '&copy; ' . date('Y') . ' Obydullah Restaurant Theme — Where Warmth Meets Flavor. All rights reserved.';
+$social      = is_array( $social ) ? $social : array();
+$links       = is_array( $links ) ? $links : array();
+?>
+
 <footer class="site-footer" id="siteFooter">
     <div class="site-footer__container">
         <div class="site-footer__grid">
@@ -108,8 +113,10 @@ if ( ! defined( 'OBIRC_VERSION' ) ) {
             <div class="site-footer__col site-footer__col--about">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-footer__logo">
                     <span class="site-footer__logo-icon"><i class="fa-solid fa-pepper-hot"></i></span>
-                    <span class="site-footer__logo-text"><?php echo esc_html( $logo_text ); ?><span
-                            class="site-footer__logo-accent"><?php echo esc_html( $logo_accent ); ?></span></span>
+                    <span class="site-footer__logo-text">
+                        <?php echo esc_html( $logo_text ); ?>
+                        <span class="site-footer__logo-accent"><?php echo esc_html( $logo_accent ); ?></span>
+                    </span>
                 </a>
                 <p class="site-footer__desc"><?php echo esc_html( $tagline ); ?></p>
                 <div class="site-footer__social">
@@ -130,7 +137,8 @@ if ( ! defined( 'OBIRC_VERSION' ) ) {
 
             <!-- Column 2: Quick Links -->
             <div class="site-footer__col site-footer__col--links">
-                <h4 class="site-footer__heading"><?php esc_html_e( 'Quick Links', 'obydullah-restaurant' ); ?></h4>
+                <h4 class="site-footer__heading"><?php esc_html_e( 'Quick Links', 'velvet-chili-restaurant-shop' ); ?>
+                </h4>
                 <?php if ( ! empty( $links ) ) : ?>
                 <ul class="site-footer__links">
                     <?php foreach ( $links as $link ) : ?>
@@ -143,7 +151,7 @@ if ( ! defined( 'OBIRC_VERSION' ) ) {
 
             <!-- Column 3: Contact -->
             <div class="site-footer__col site-footer__col--contact">
-                <h4 class="site-footer__heading"><?php esc_html_e( 'Contact', 'obydullah-restaurant' ); ?></h4>
+                <h4 class="site-footer__heading"><?php esc_html_e( 'Contact', 'velvet-chili-restaurant-shop' ); ?></h4>
                 <ul class="site-footer__contact">
                     <?php if ( ! empty( $address ) ) : ?>
                     <li><i
@@ -168,12 +176,8 @@ if ( ! defined( 'OBIRC_VERSION' ) ) {
         </div>
     </div>
 </footer>
+
 <?php
-    }
-}
-
-wp_footer();
+// No need for wp_reset_postdata() as we used get_posts()
+// wp_footer() should be called outside this file, normally in footer.php
 ?>
-</body>
-
-</html>
