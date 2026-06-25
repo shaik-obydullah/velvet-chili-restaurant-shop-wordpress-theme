@@ -42,7 +42,7 @@ $products = array(
 ?>
 
 <!-- ========== SIGNATURE DISHES SECTION (PURE DUMMY) ========== -->
-<section class="woo-products">
+<section class="woo-products" id="ourMenu">
     <div class="woo-products__container">
         <!-- Section header -->
         <div class="woo-products__header">

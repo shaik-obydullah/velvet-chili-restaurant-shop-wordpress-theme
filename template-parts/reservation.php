@@ -48,7 +48,7 @@ if ( empty( $note ) ) {
     $note = __( 'Last reservation 30 minutes before closing', 'obydullah-restaurant' );
 }
 ?>
-<section class="reservation" id="reservation">
+<section class="reservation" id="book">
     <div class="reservation__container">
         <div class="reservation__grid">
             <!-- Left: Opening Hours -->
