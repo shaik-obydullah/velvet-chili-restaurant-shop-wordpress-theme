@@ -70,8 +70,8 @@ jQuery(document).ready(function ($) {
     submitBtn.text("Sending...").prop("disabled", true);
 
     var formData = {
-      action: "vcrs_booking",
-      nonce: vcrs_booking_ajax.nonce,
+      action: "obirsc_booking",
+      nonce: $('[name="nonce"]').val(),
       name: name,
       email: email,
       phone: phone,
@@ -82,7 +82,7 @@ jQuery(document).ready(function ($) {
     };
 
     $.ajax({
-      url: vcrs_booking_ajax.ajax_url,
+      url: obirsc_booking_nonce.ajax_url,
       type: "POST",
       data: formData,
       success: function (response) {

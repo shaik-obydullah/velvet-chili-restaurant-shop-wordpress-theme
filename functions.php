@@ -63,22 +63,20 @@ function vcrs_assets() {
 }
 add_action('wp_enqueue_scripts', 'vcrs_assets');
 
-function vcrs_theme_enqueue_booking_assets() {
-    if ( defined( 'OBIRSC_VERSION' ) ) {
-        wp_enqueue_script(
-            'vcrs-booking',
-            get_template_directory_uri() . '/assets/js/booking.js',
-            array( 'jquery' ),
-            '1.0',
-            true
-        );
-        wp_localize_script( 'vcrs-booking', 'vcrs_booking_ajax', array(
-            'ajax_url' => admin_url( 'admin-ajax.php' ),
-            'nonce'    => wp_create_nonce( 'vcrs_booking_nonce' ),
-        ) );
-    }
+function vcrs_enqueue_booking_assets() {
+    wp_enqueue_script(
+        'vcrs-booking',                        
+        get_template_directory_uri() . '/assets/js/booking.js',
+        array( 'jquery' ),
+        '1.0.0',
+        true
+    );
+
+    wp_localize_script( 'vcrs-booking', 'obirsc_booking_nonce', array(
+        'ajax_url' => admin_url( 'admin-ajax.php' ),
+    ) );
 }
-add_action( 'wp_enqueue_scripts', 'vcrs_theme_enqueue_booking_assets' );
+add_action( 'wp_enqueue_scripts', 'vcrs_enqueue_booking_assets' );
 
 
 /* ======================================================
