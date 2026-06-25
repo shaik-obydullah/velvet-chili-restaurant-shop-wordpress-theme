@@ -1,80 +1,151 @@
 <?php
 /**
- * WooCommerce Product Section
- * Replaces Chef's Special with a dynamic product display (image left, text right).
- * Uses the latest published product or a dummy product as fallback.
+ * Chef's Special Section
+ * Displays dynamic Chef's Special if plugin active & CPT has posts.
+ * Otherwise shows a static fallback.
  */
 
-// Check if WooCommerce is active
-$woocommerce_active = class_exists( 'WooCommerce' );
+$fallback_image = get_template_directory_uri() . '/assets/images/chef-special.jpg';
 
-$product = null;
+// Check if plugin is active and CPT exists
+$has_plugin = defined( 'OBIRSC_VERSION' );
+$has_cpt    = post_type_exists( 'obirsc_chef_special' );
 
-if ( $woocommerce_active ) {
-    // Get the most recent published product
-    $products = wc_get_products( array(
-        'limit'  => 1,
-        'status' => 'publish',
-    ) );
-
-    if ( ! empty( $products ) ) {
-        $product = $products[0];
-    }
+// Only run query if plugin and CPT are available
+if ( $has_plugin && $has_cpt ) {
+    $chef_posts = get_posts( [
+        'post_type'      => 'obirsc_chef_special',
+        'posts_per_page' => 1,
+        'post_status'    => 'publish',
+    ] );
+    $has_chef = ! empty( $chef_posts );
+} else {
+    $has_chef = false;
 }
 
-// If we have a real product from WooCommerce, display its data
-if ( $product instanceof WC_Product ) {
-    $product_id      = $product->get_id();
-    $image_url       = wp_get_attachment_image_url( $product->get_image_id(), 'full' );
-    if ( ! $image_url ) {
-        $image_url = wc_placeholder_img_src( 'full' );
+if ( $has_plugin && $has_cpt && $has_chef ) :
+    $chef_post = $chef_posts[0];
+    $chef_id   = $chef_post->ID;
+
+    // Get meta data
+    $subtitle   = get_post_meta( $chef_id, 'obirsc_subtitle', true );
+    $body       = get_post_meta( $chef_id, 'obirsc_body', true );
+    $product_id = intval( get_post_meta( $chef_id, '_obirsc_woo_product_id', true ) );
+    $title      = get_the_title( $chef_id );
+
+    // Image: fallback to dummy if no product image
+    $image_url = $fallback_image;
+
+    // Prepare product data if WooCommerce is active and product is linked
+    $product_data = null;
+    $product_permalink = '#';
+
+    if ( $product_id && class_exists( 'WooCommerce' ) ) {
+        $product = wc_get_product( $product_id );
+        if ( $product ) {
+            $product_image = wp_get_attachment_image_url( $product->get_image_id(), 'full' );
+            if ( $product_image ) {
+                $image_url = $product_image;
+            }
+
+            $product_permalink = get_permalink( $product_id );
+
+            $product_data = [
+                'name'            => $product->get_name(),
+                'price_html'      => $product->get_price_html(),
+                'permalink'       => $product_permalink,
+                'is_purchasable'  => $product->is_purchasable(),
+            ];
+        }
     }
-    $title           = $product->get_name();
-    $price_html      = $product->get_price_html();
-    $short_desc      = $product->get_short_description();
-    $product_url     = get_permalink( $product_id );
-    $add_to_cart_url = $product->add_to_cart_url();
-    ?>
+?>
+
 <section class="menu-highlight" id="chefSpecial">
     <div class="menu-highlight__image">
         <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $title ); ?>" loading="lazy">
     </div>
     <div class="menu-highlight__text">
-        <span class="menu-highlight__kicker">Chef's Special</span>
-        <h2 class="menu-highlight__title"><?php echo esc_html( $title ); ?></h2>
-        <p class="menu-highlight__subtitle"><?php echo wp_kses_post( $price_html ); ?></p>
+        <span class="menu-highlight__kicker">
+            <?php esc_html_e( 'Chef\'s Special', 'velvet-chili-restaurant-shop' ); ?>
+        </span>
+
+        <h2 class="menu-highlight__title">
+            <?php echo esc_html( $title ); ?>
+        </h2>
+
+        <?php if ( $subtitle ) : ?>
+        <p class="menu-highlight__subtitle">
+            <?php echo esc_html( $subtitle ); ?>
+        </p>
+        <?php endif; ?>
+
+        <?php if ( $product_data && $product_data['price_html'] ) : ?>
+        <p class="menu-highlight__price">
+            <?php echo wp_kses_post( $product_data['price_html'] ); ?>
+        </p>
+        <?php endif; ?>
+
         <div class="menu-highlight__body">
-            <?php echo wp_kses_post( $short_desc ?: 'A delicious selection from our kitchen – made with fresh ingredients and passion.' ); ?>
-            <div class="product-action" style="margin-top: 1rem;">
-                <a href="<?php echo esc_url( $add_to_cart_url ); ?>" class="button add_to_cart_button"
-                    data-product_id="<?php echo absint( $product_id ); ?>">Order Now →</a>
+            <?php if ( $body ) : ?>
+            <?php echo wp_kses_post( $body ); ?>
+            <?php else : ?>
+            <?php echo wp_kses_post( $product_data['name'] ?? '' ); ?>
+            <?php endif; ?>
+
+            <div class="product-action">
+                <?php if ( $product_data && $product_permalink !== '#' ) : ?>
+                <a href="<?php echo esc_url( $product_permalink ); ?>" class="nav__link--cta">
+                    <?php esc_html_e( 'View Product', 'velvet-chili-restaurant-shop' ); ?>
+                </a>
+                <?php else : ?>
+                <a href="#" class="button nav__link--cta">
+                    <?php esc_html_e( 'Coming Soon', 'velvet-chili-restaurant-shop' ); ?>
+                </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
+
 <?php
-} else {
-    // Fallback dummy product (no WooCommerce or no products found)
-    ?>
+    wp_reset_postdata();
+else :
+?>
+
+<!-- Static Fallback -->
 <section class="menu-highlight" id="chefSpecial">
     <div class="menu-highlight__image">
-        <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/dummy-product.jpg' ); ?>"
-            alt="Dummy Product" loading="lazy">
+        <img src="<?php echo esc_url( $fallback_image ); ?>"
+            alt="<?php esc_attr_e( 'Chef\'s Special', 'velvet-chili-restaurant-shop' ); ?>" loading="lazy">
     </div>
     <div class="menu-highlight__text">
-        <span class="menu-highlight__kicker">Chef's Special</span>
-        <h2 class="menu-highlight__title">Smoked Brisket Burger</h2>
-        <p class="menu-highlight__subtitle"><span class="woocommerce-Price-amount amount"><bdi><span
-                        class="woocommerce-Price-currencySymbol">$</span>24.90</bdi></span></p>
+        <span class="menu-highlight__kicker">
+            <?php esc_html_e( 'Chef\'s Special', 'velvet-chili-restaurant-shop' ); ?>
+        </span>
+
+        <h2 class="menu-highlight__title">
+            <?php esc_html_e( 'Smoked Brisket Burger', 'velvet-chili-restaurant-shop' ); ?>
+        </h2>
+
+        <p class="menu-highlight__subtitle">
+            <?php esc_html_e( 'Chef\'s Signature', 'velvet-chili-restaurant-shop' ); ?>
+        </p>
+
+        <p class="menu-highlight__price">
+            <span class="woocommerce-Price-amount amount">
+                <bdi><span class="woocommerce-Price-currencySymbol">$</span>24.90</bdi>
+            </span>
+        </p>
+
         <div class="menu-highlight__body">
-            Premium beef patty, slow‑smoked brisket, cheddar, crispy onion rings, and house BBQ sauce. Served with
-            seasoned fries.
-            <div class="product-action" style="margin-top: 1rem;">
-                <a href="#" class="button">Order Now →</a>
+            <?php esc_html_e( 'Premium beef patty, slow‑smoked brisket, cheddar, crispy onion rings, and house BBQ sauce. Served with seasoned fries.', 'velvet-chili-restaurant-shop' ); ?>
+            <div class="product-action">
+                <a href="#" class="button nav__link--cta">
+                    <?php esc_html_e( 'Coming Soon', 'velvet-chili-restaurant-shop' ); ?>
+                </a>
             </div>
         </div>
     </div>
 </section>
-<?php
-}
-?>
+
+<?php endif; ?>
