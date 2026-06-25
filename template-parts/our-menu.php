@@ -119,7 +119,6 @@ $menu_link = class_exists( 'WooCommerce' ) ? get_permalink( wc_get_page_id( 'sho
 ============================================================ -->
 <section class="woo-products" id="ourMenu">
     <div class="woo-products__container">
-        <!-- Section header (no background image) -->
         <div class="woo-products__header">
             <span
                 class="woo-products__kicker"><?php esc_html_e( 'From Our Kitchen', 'velvet-chili-restaurant-shop' ); ?></span>
