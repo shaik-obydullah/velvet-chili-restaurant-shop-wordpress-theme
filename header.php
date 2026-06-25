@@ -30,14 +30,10 @@
 
             <!-- Right actions: Cart + Hamburger -->
             <div class="header-actions">
-                <div class="header-cart">
-                    <a href="#" class="cart-link" aria-label="Shopping cart">
-                        <i class="fa-solid fa-bag-shopping cart-icon"></i>
-                        <span class="cart-count">2</span>
-                        <span class="cart-total">$0.00</span>
-                    </a>
-                </div>
+                <!-- Shopping Cart -->
+                <?php vcrs_render_cart(); ?>
 
+                <!-- Hamburger Toggle Button (Mobile) -->
                 <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
                     type="button">
                     <span class="hamburger__line"></span>

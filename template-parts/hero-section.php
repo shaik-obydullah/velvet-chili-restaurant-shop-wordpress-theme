@@ -8,13 +8,13 @@
 $fallback_image = get_template_directory_uri() . '/assets/images/hero.jpg';
 
 // Check if plugin is active and CPT exists
-$has_plugin = defined( 'OBIRC_VERSION' );
-$has_cpt    = post_type_exists( 'obirc_hero_slide' );
+$has_plugin = defined( 'OBIRSC_VERSION' );
+$has_cpt    = post_type_exists( 'obirsc_hero_slide' );
 
 // Only run query if plugin and CPT are available
 if ( $has_plugin && $has_cpt ) {
     $args = [
-        'post_type'      => 'obirc_hero_slide',
+        'post_type'      => 'obirsc_hero_slide',
         'posts_per_page' => -1,
         'orderby'        => 'menu_order',
         'order'          => 'ASC'
@@ -29,9 +29,7 @@ if ( $has_plugin && $has_cpt && $has_slides ) :
 ?>
 
 <section class="slider" id="featuredSlider" aria-roledescription="carousel" aria-label="Featured dishes">
-
     <div class="slider__slides" id="sliderSlides">
-
         <?php
         $total = $query->post_count;
         $i = 0;
@@ -51,7 +49,7 @@ if ( $has_plugin && $has_cpt && $has_slides ) :
                 <h2 class="slider__title"><?php echo esc_html( get_the_title() ); ?></h2>
                 <p class="slider__subtitle">
                     <?php
-                        $subtitle = get_post_meta( get_the_ID(), '_vcrc_subtitle', true );
+                        $subtitle = get_post_meta( get_the_ID(), 'obirsc_subtitle', true );
                         echo esc_html( $subtitle );
                     ?>
                 </p>
@@ -76,7 +74,6 @@ if ( $has_plugin && $has_cpt && $has_slides ) :
             aria-label="<?php echo esc_attr( sprintf( 'Go to slide %d', $d + 1 ) ); ?>"></button>
         <?php endfor; ?>
     </div>
-
 </section>
 
 <?php

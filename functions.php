@@ -13,8 +13,11 @@
  * INDEX
  * 1. Assets
  * 2. Theme Setup
- * 3. Customizer Settings
- * 4. Admin Notice
+ * 3. Menus
+ * 4. Fallback Menus
+ * 5. Cart
+ * 6. Customizer Settings
+ * 7. Admin Notice
  */
 
 /* ======================================================
@@ -82,7 +85,6 @@ add_action( 'wp_enqueue_scripts', 'vcrs_theme_enqueue_booking_assets' );
    2. Theme Setup
 ====================================================== */
 function vcrs_setup() {
-
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'automatic-feed-links' );
@@ -103,10 +105,10 @@ function vcrs_setup() {
 }
 add_action( 'after_setup_theme', 'vcrs_setup' );
 
-/* ======================================================
- *  3. Fallback Menus
- * ====================================================== */
 
+/* ======================================================
+ *  3. Menus
+ * ====================================================== */
 
 /**
  * Retrieve menu items for a given location.
@@ -178,6 +180,25 @@ function vcrs_render_menu_items( $location, $class_prefix ) {
 }
 
 /**
+ * Main function to be used in the template – renders either the WordPress menu
+ * or the fallback.
+ *
+ * @param string $location      Menu location.
+ * @param string $class_prefix  CSS prefix.
+ * @param string $fallback      Name of the fallback function.
+ */
+function vcrs_render_nav_menu( $location, $class_prefix, $fallback ) {
+    $rendered = vcrs_render_menu_items( $location, $class_prefix );
+    if ( ! $rendered && function_exists( $fallback ) ) {
+        call_user_func( $fallback );
+    }
+}
+
+/* ======================================================
+ *  4. Fallback Menus
+ * ====================================================== */
+
+/**
  * Fallback for desktop primary menu (used when no menu is assigned).
  */
 function vcrs_primary_menu_fallback() {
@@ -223,23 +244,66 @@ function vcrs_mobile_menu_fallback() {
 <?php
 }
 
+/* ======================================================
+ *  5. Cart
+ * ====================================================== */
+
 /**
- * Main function to be used in the template – renders either the WordPress menu
- * or the fallback.
- *
- * @param string $location      Menu location.
- * @param string $class_prefix  CSS prefix.
- * @param string $fallback      Name of the fallback function.
+ * Display the WooCommerce cart link with count and total, or a fallback.
  */
-function vcrs_render_nav_menu( $location, $class_prefix, $fallback ) {
-    $rendered = vcrs_render_menu_items( $location, $class_prefix );
-    if ( ! $rendered && function_exists( $fallback ) ) {
-        call_user_func( $fallback );
+function vcrs_render_cart() {
+    ?>
+<div class="header-cart">
+    <?php if ( class_exists( 'WooCommerce' ) ) : ?>
+    <?php 
+            $cart_url   = wc_get_cart_url();
+            $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
+            $cart_total = WC()->cart ? WC()->cart->get_cart_subtotal() : '$0.00';
+            ?>
+    <a href="<?php echo esc_url( $cart_url ); ?>" class="cart-link" aria-label="Shopping cart">
+        <i class="fa-solid fa-bag-shopping cart-icon"></i>
+        <span class="cart-count"><?php echo esc_html( $cart_count ); ?></span>
+        <span class="cart-total"><?php echo wp_kses_post( $cart_total ); ?></span>
+    </a>
+    <?php else : ?>
+    <!-- Fallback: disabled placeholder -->
+    <a href="#" class="cart-link" aria-label="Shopping cart" style="opacity:0.4; pointer-events:none;">
+        <i class="fa-solid fa-bag-shopping cart-icon"></i>
+        <span class="cart-count">0</span>
+        <span class="cart-total">$0.00</span>
+    </a>
+    <?php endif; ?>
+</div>
+<?php
+}
+
+/**
+ * Add custom cart fragments for AJAX updates.
+ *
+ * @param array $fragments Array of fragments.
+ * @return array
+ */
+/**
+ * Add AJAX cart fragments if WooCommerce is active.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+    add_filter( 'woocommerce_add_to_cart_fragments', 'vcrs_cart_fragments' );
+}
+
+function vcrs_cart_fragments( $fragments ) {
+    if ( class_exists( 'WooCommerce' ) && WC()->cart ) {
+        $fragments['.cart-count'] = '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+        $fragments['.cart-total'] = '<span class="cart-total">' . WC()->cart->get_cart_subtotal() . '</span>';
+    } else {
+        // Fallback (should never be used, but keeps it safe)
+        $fragments['.cart-count'] = '<span class="cart-count">0</span>';
+        $fragments['.cart-total'] = '<span class="cart-total">$0.00</span>';
     }
+    return $fragments;
 }
 
 /* ======================================================
- *  4. Customizer Settings
+ *  6. Customizer Settings
  * ====================================================== */
 
 function vcrs_customize_register($wp_customize) {
@@ -275,7 +339,7 @@ add_action('customize_register', 'vcrs_customize_register');
 
 
 /* ======================================================
- *  5. Admin Notice
+ *  7. Admin Notice
  * ====================================================== */
 function vcrs_admin_notice() {
     if ( ! function_exists( 'get_current_screen' ) ) {
