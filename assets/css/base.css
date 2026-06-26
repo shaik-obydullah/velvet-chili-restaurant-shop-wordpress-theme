@@ -1,19 +1,27 @@
-/*
- * Obydullah Restaurant Theme – Base Stylesheet
- * ------------------------------------------------------------
+/*!
+ * =================================================================
+ * Theme Name: Velvet Chili Restaurant Shop
+ * Version: 1.0.0
+ * Author: Shaik Obydullah
+ * Author URI: https://obydullah.com
  * Purpose: Core foundation styles (reset, variables, typography)
- *
- * Table of Contents:
- *   1. CSS Custom Properties
- *   2. Global Reset
- *   3. Typography Defaults
- *   4. Elements (a, ul, img, button)
- *   5. Utility Classes
- *   6. Scrollbar Styling
- *   7. Accessibility & Motion Reduction
+ * =================================================================
  */
 
-/* ---------- 1. CSS Custom Properties ---------- */
+/**
+ * INDEX
+ * 1. CSS Custom Properties
+ * 2. Global Reset
+ * 3. Typography Defaults
+ * 4. Elements (a, ul, img, button)
+ * 5. Utility Classes
+ * 6. Scrollbar Styling
+ * 7. Accessibility & Motion Reduction
+ */
+
+/* ==========================================================================
+   1. CSS Custom Properties
+   ========================================================================== */
 
 :root {
   /* Color Palette */
@@ -45,7 +53,9 @@
   --transition-fast: 0.2s ease;
 }
 
-/* ---------- 2. Global Reset ---------- */
+/* ==========================================================================
+   2. Global Reset
+   ========================================================================== */
 *,
 *::before,
 *::after {
@@ -71,7 +81,10 @@ body {
   min-height: 100vh;
 }
 
-/* ---------- 3. Typography Defaults ---------- */
+/* ==========================================================================
+   3. Typography Defaults
+   ========================================================================== */
+
 h1,
 h2,
 h3,
@@ -89,7 +102,10 @@ p {
   color: var(--color-text-secondary);
 }
 
-/* ---------- 4. Elements ---------- */
+/* ==========================================================================
+   4. Elements (a, ul, img, button)
+   ========================================================================== */
+
 a {
   text-decoration: none;
   color: inherit;
@@ -118,7 +134,10 @@ button {
   font-family: inherit;
 }
 
-/* ---------- 5. Utility Classes ---------- */
+/* ==========================================================================
+   5. Utility Classes
+   ========================================================================== */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -144,7 +163,10 @@ button {
   text-align: center;
 }
 
-/* ---------- 6. Scrollbar Styling ---------- */
+/* ==========================================================================
+   6. Scrollbar Styling
+   ========================================================================== */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -156,14 +178,15 @@ button {
   border-radius: 4px;
 }
 
-/* ---------- 7. Accessibility & Motion Reduction ---------- */
-/* Visible focus for keyboard navigation */
+/* ==========================================================================
+   7. Accessibility & Motion Reduction
+   ========================================================================== */
+
 :focus-visible {
   outline: 3px solid var(--color-chili-red);
   outline-offset: 2px;
 }
 
-/* Skip to content link – add in header.php */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -183,7 +206,6 @@ button {
   z-index: 10000;
 }
 
-/* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

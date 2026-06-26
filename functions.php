@@ -247,42 +247,66 @@ function vcrs_mobile_menu_fallback() {
  * ====================================================== */
 
 /**
- * Display the WooCommerce cart link with count and total, or a fallback.
+ * Create Cart page on theme switch if it doesn't exist.
+ */
+function vcrs_create_cart_page() {
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        return;
+    }
+    
+    $cart_page_id = wc_get_page_id( 'cart' );
+    
+    if ( ! $cart_page_id || get_post_status( $cart_page_id ) !== 'publish' ) {
+        $cart_page = array(
+            'post_title'   => __( 'Cart', 'velvet-chili-restaurant-shop' ),
+            'post_content' => '[woocommerce_cart]',
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+        );
+        
+        $new_page_id = wp_insert_post( $cart_page );
+        
+        if ( $new_page_id && ! is_wp_error( $new_page_id ) ) {
+            update_option( 'woocommerce_cart_page_id', $new_page_id );
+        }
+    }
+}
+add_action( 'after_switch_theme', 'vcrs_create_cart_page' );
+
+/**
+ * Render cart icon with count and total.
  */
 function vcrs_render_cart() {
-    ?>
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        ?>
 <div class="header-cart">
-    <?php if ( class_exists( 'WooCommerce' ) ) : ?>
-    <?php 
-            $cart_url   = wc_get_cart_url();
-            $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
-            $cart_total = WC()->cart ? WC()->cart->get_cart_subtotal() : '$0.00';
-            ?>
-    <a href="<?php echo esc_url( $cart_url ); ?>" class="cart-link" aria-label="Shopping cart">
-        <i class="fa-solid fa-bag-shopping cart-icon"></i>
-        <span class="cart-count"><?php echo esc_html( $cart_count ); ?></span>
-        <span class="cart-total"><?php echo wp_kses_post( $cart_total ); ?></span>
-    </a>
-    <?php else : ?>
-    <!-- Fallback: disabled placeholder -->
     <a href="#" class="cart-link" aria-label="Shopping cart" style="opacity:0.4; pointer-events:none;">
         <i class="fa-solid fa-bag-shopping cart-icon"></i>
         <span class="cart-count">0</span>
         <span class="cart-total">$0.00</span>
     </a>
-    <?php endif; ?>
+</div>
+<?php
+        return;
+    }
+    ?>
+<div class="header-cart">
+    <?php 
+        $cart_url   = wc_get_cart_url();
+        $cart_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
+        $cart_total = WC()->cart ? WC()->cart->get_cart_subtotal() : '$0.00';
+        ?>
+    <a href="<?php echo esc_url( $cart_url ); ?>" class="cart-link" aria-label="Shopping cart">
+        <i class="fa-solid fa-bag-shopping cart-icon"></i>
+        <span class="cart-count"><?php echo esc_html( $cart_count ); ?></span>
+        <span class="cart-total"><?php echo wp_kses_post( $cart_total ); ?></span>
+    </a>
 </div>
 <?php
 }
 
 /**
- * Add custom cart fragments for AJAX updates.
- *
- * @param array $fragments Array of fragments.
- * @return array
- */
-/**
- * Add AJAX cart fragments if WooCommerce is active.
+ * AJAX cart fragments for real-time updates.
  */
 if ( class_exists( 'WooCommerce' ) ) {
     add_filter( 'woocommerce_add_to_cart_fragments', 'vcrs_cart_fragments' );
@@ -293,7 +317,6 @@ function vcrs_cart_fragments( $fragments ) {
         $fragments['.cart-count'] = '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
         $fragments['.cart-total'] = '<span class="cart-total">' . WC()->cart->get_cart_subtotal() . '</span>';
     } else {
-        // Fallback (should never be used, but keeps it safe)
         $fragments['.cart-count'] = '<span class="cart-count">0</span>';
         $fragments['.cart-total'] = '<span class="cart-total">$0.00</span>';
     }

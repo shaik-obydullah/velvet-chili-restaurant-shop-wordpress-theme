@@ -1,6 +1,14 @@
+/*!
+ * =================================================================
+ * Theme Name: Velvet Chili Restaurant Shop
+ * Version: 1.0.0
+ * Author: Shaik Obydullah
+ * Author URI: https://obydullah.com
+ * =================================================================
+ */
+
 /**
- * Obydullah Restaurant Theme – Main JavaScript
- * =================================
+ * INDEX
  * Table of Contents:
  *   1. Mobile Navigation
  *   2. Featured Slider (Hero)
@@ -11,10 +19,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
-  /* ---------- 1. Mobile Navigation ---------- */
+  /* ==========================================================================
+   1. Mobile Navigation
+   ========================================================================== */
+
   initMobileNav();
 
-  /* ---------- 2. Featured Slider (Hero) ---------- */
+  /* ==========================================================================
+   2. Featured Slider (Hero)
+   ========================================================================== */
+
   initSlider({
     sliderId: "featuredSlider",
     slideSelector: ".slider__slide",
@@ -24,7 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     autoplayDelay: 5000,
   });
 
-  /* ---------- 3. Testimonial Carousel ---------- */
+  /* ==========================================================================
+   3. Testimonial Carousel
+   ========================================================================== */
+
   initSlider({
     sliderId: "testimonialCarousel",
     slideSelector: ".testimonial-carousel__slide",
@@ -34,7 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
     autoplayDelay: 6000,
   });
 
-  /* ---------- 4. Event Slider (About page) ---------- */
+  /* ==========================================================================
+   4. Event Slider (About Page) 
+   ========================================================================== */
+
   initSlider({
     sliderId: "eventSlider",
     slideSelector: ".event-slider__slide",
@@ -44,7 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     autoplayDelay: 5000,
   });
 
-  /* ---------- 1. Mobile Navigation Implementation ---------- */
+  /* ---------- Mobile Navigation Implementation  ---------- */
+
   function initMobileNav() {
     const body = document.body;
     const hamburgerBtn = document.getElementById("hamburgerBtn");
@@ -94,7 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---------- 2–4. Shared Slider Logic ---------- */
+  /* ---------- Shared Slider Logic  ---------- */
+
   function initSlider({
     sliderId,
     slideSelector,

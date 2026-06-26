@@ -6,9 +6,6 @@
  * - Static fallback when plugin inactive or no data
  */
 
-// -------------------------------------------------------------
-// 1. Define static fallback data
-// -------------------------------------------------------------
 function vcrs_reservation_fallback_hours() {
     return array(
         array( 'day' => 'Monday – Thursday', 'time' => '5 PM – 10 PM' ),
@@ -18,9 +15,6 @@ function vcrs_reservation_fallback_hours() {
     );
 }
 
-// -------------------------------------------------------------
-// 2. Get dynamic data if plugin active
-// -------------------------------------------------------------
 $hours = array();
 $note  = '';
 $title = '';

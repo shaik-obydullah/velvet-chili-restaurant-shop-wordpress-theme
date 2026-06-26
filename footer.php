@@ -67,45 +67,40 @@ function vcrs_footer_fallback() {
 // -------------------------------------------------------------
 if ( ! defined( 'OBIRSC_VERSION' ) ) {
     vcrs_footer_fallback();
-    return;
-}
+} else {
+    // -------------------------------------------------------------
+    // 3. Get Footer Settings from CPT
+    // -------------------------------------------------------------
+    $footer_posts = get_posts( array(
+        'post_type'      => 'obirsc_footer',
+        'posts_per_page' => 1,
+        'post_status'    => 'publish',
+    ) );
 
-// -------------------------------------------------------------
-// 3. Get Footer Settings from CPT
-// -------------------------------------------------------------
-$footer_posts = get_posts( array(
-    'post_type'      => 'obirsc_footer',
-    'posts_per_page' => 1,
-    'post_status'    => 'publish',
-) );
+    if ( empty( $footer_posts ) ) {
+        vcrs_footer_fallback();
+    } else {
+        $footer_id = $footer_posts[0]->ID;
 
-if ( empty( $footer_posts ) ) {
-    vcrs_footer_fallback();
-    return;
-}
+        // Retrieve meta fields (all with correct prefix 'obirsc_footer_')
+        $logo_text   = get_post_meta( $footer_id, 'obirsc_footer_logo_text', true );
+        $logo_accent = get_post_meta( $footer_id, 'obirsc_footer_logo_accent', true );
+        $tagline     = get_post_meta( $footer_id, 'obirsc_footer_tagline', true );
+        $social      = get_post_meta( $footer_id, 'obirsc_footer_social', true );
+        $links       = get_post_meta( $footer_id, 'obirsc_footer_links', true );
+        $address     = get_post_meta( $footer_id, 'obirsc_footer_address', true );
+        $phone       = get_post_meta( $footer_id, 'obirsc_footer_phone', true );
+        $email       = get_post_meta( $footer_id, 'obirsc_footer_email', true );
+        $copyright   = get_post_meta( $footer_id, 'obirsc_footer_copyright', true );
 
-$footer_id = $footer_posts[0]->ID;
-
-// Retrieve meta fields (all with correct prefix 'obirsc_footer_')
-$logo_text   = get_post_meta( $footer_id, 'obirsc_footer_logo_text', true );
-$logo_accent = get_post_meta( $footer_id, 'obirsc_footer_logo_accent', true );
-$tagline     = get_post_meta( $footer_id, 'obirsc_footer_tagline', true );
-$social      = get_post_meta( $footer_id, 'obirsc_footer_social', true );
-$links       = get_post_meta( $footer_id, 'obirsc_footer_links', true );
-$address     = get_post_meta( $footer_id, 'obirsc_footer_address', true );
-$phone       = get_post_meta( $footer_id, 'obirsc_footer_phone', true );
-$email       = get_post_meta( $footer_id, 'obirsc_footer_email', true );
-$copyright   = get_post_meta( $footer_id, 'obirsc_footer_copyright', true );
-
-// Fallback values (if empty, use the static fallback defaults)
-$logo_text   = $logo_text ?: 'Obydullah';
-$logo_accent = $logo_accent ?: 'Restaurant';
-$tagline     = $tagline ?: 'A modern dining experience built around the soul of the chili pepper. Slow‑cooked, bold, and unforgettable.';
-$copyright   = $copyright ?: '&copy; ' . date('Y') . ' Obydullah Restaurant Theme — Where Warmth Meets Flavor. All rights reserved.';
-$social      = is_array( $social ) ? $social : array();
-$links       = is_array( $links ) ? $links : array();
-?>
-
+        // Fallback values (if empty, use the static fallback defaults)
+        $logo_text   = $logo_text ?: 'Obydullah';
+        $logo_accent = $logo_accent ?: 'Restaurant';
+        $tagline     = $tagline ?: 'A modern dining experience built around the soul of the chili pepper. Slow‑cooked, bold, and unforgettable.';
+        $copyright   = $copyright ?: '&copy; ' . date('Y') . ' Obydullah Restaurant Theme — Where Warmth Meets Flavor. All rights reserved.';
+        $social      = is_array( $social ) ? $social : array();
+        $links       = is_array( $links ) ? $links : array();
+        ?>
 <footer class="site-footer" id="siteFooter">
     <div class="site-footer__container">
         <div class="site-footer__grid">
@@ -176,8 +171,15 @@ $links       = is_array( $links ) ? $links : array();
         </div>
     </div>
 </footer>
-
 <?php
-// No need for wp_reset_postdata() as we used get_posts()
-// wp_footer() should be called outside this file, normally in footer.php
+    }
+}
+
+// ============================================================
+// CRITICAL: WordPress footer hooks (for JS, scripts, etc.)
+// ============================================================
+wp_footer();
 ?>
+</body>
+
+</html>

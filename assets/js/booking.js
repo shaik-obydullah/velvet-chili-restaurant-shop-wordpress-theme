@@ -1,6 +1,15 @@
+/*!
+ * =================================================================
+ * Theme Name: Velvet Chili Restaurant Shop
+ * Version: 1.0.0
+ * Author: Shaik Obydullah
+ * Author URI: https://obydullah.com
+ * =================================================================
+ */
+
 /**
- * Booking Form AJAX Submission (client-side UX only)
- * Server-side validation remains the single source of truth.
+ * Booking Form AJAX Submission (Client-Side UX Only)
+ * Server Side Validation Remains The Single Source of Truth.
  */
 jQuery(document).ready(function ($) {
   $("#bookingForm").on("submit", function (e) {

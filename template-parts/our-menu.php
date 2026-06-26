@@ -5,9 +5,6 @@
  * Otherwise shows a static fallback.
  */
 
-// ============================================================
-// 1. Get Menu Area data (title + subtitle)
-// ============================================================
 $menu_area_data = array(
     'title'    => __( 'Signature Dishes', 'velvet-chili-restaurant-shop' ),
     'subtitle' => __( 'Every dish is a story of fire, spice, and slow‑crafted comfort.', 'velvet-chili-restaurant-shop' ),
@@ -27,7 +24,6 @@ if ( $has_plugin && $has_cpt ) {
         $menu_area_post = $menu_area_posts[0];
         $menu_area_data['title'] = get_the_title( $menu_area_post );
 
-        // Get subtitle meta
         $subtitle = get_post_meta( $menu_area_post->ID, 'obirsc_menu_area_subtitle', true );
         if ( $subtitle ) {
             $menu_area_data['subtitle'] = $subtitle;
@@ -35,9 +31,6 @@ if ( $has_plugin && $has_cpt ) {
     }
 }
 
-// ============================================================
-// 2. Define dummy items
-// ============================================================
 $dummy_items = array(
     array(
         'title'       => 'Smoked Ancho Ribeye',
@@ -57,9 +50,6 @@ $dummy_items = array(
     ),
 );
 
-// ============================================================
-// 3. Get Menu Items data (product grid)
-// ============================================================
 $has_items = false;
 $menu_item_query = null;
 $display_items = array();
@@ -72,7 +62,7 @@ $has_cpt_items    = post_type_exists( 'obirsc_menu_item' );
 if ( $has_plugin_items && $has_cpt_items ) {
     $menu_item_query = new WP_Query( array(
         'post_type'      => 'obirsc_menu_item',
-        'posts_per_page' => 4,
+        'posts_per_page' => 8,
         'post_status'    => 'publish',
         'orderby'        => 'menu_order',
         'order'          => 'ASC',
@@ -114,9 +104,6 @@ $grid_items = ! empty( $display_items ) ? $display_items : $dummy_items;
 $menu_link = class_exists( 'WooCommerce' ) ? get_permalink( wc_get_page_id( 'shop' ) ) : '/menu';
 ?>
 
-<!-- ============================================================
-     OUR MENU SECTION
-============================================================ -->
 <section class="woo-products" id="ourMenu">
     <div class="woo-products__container">
         <div class="woo-products__header">

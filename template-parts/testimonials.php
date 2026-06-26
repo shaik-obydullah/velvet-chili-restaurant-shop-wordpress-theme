@@ -6,9 +6,6 @@
  * - Falls back to static HTML when no dynamic data available
  */
 
-// -------------------------------------------------------------
-// 1. Define static fallback (dummy testimonials)
-// -------------------------------------------------------------
 function vcrs_default_testimonials_html() {
     ?>
 <section class="testimonials-section" id="testimonials">
@@ -82,17 +79,11 @@ function vcrs_default_testimonials_html() {
 <?php
 }
 
-// -------------------------------------------------------------
-// 2. Check if plugin is active
-// -------------------------------------------------------------
 if ( ! defined( 'OBIRSC_VERSION' ) ) {
     vcrs_default_testimonials_html();
     return;
 }
 
-// -------------------------------------------------------------
-// 3. Get Testimonial Area (single post) – title & background
-// -------------------------------------------------------------
 $area_posts = get_posts( array(
     'post_type'      => 'obirsc_testi_area',
     'posts_per_page' => 1,
@@ -113,9 +104,6 @@ $area_image  = get_the_post_thumbnail_url( $area_id, 'full' );
 $area_title = $area_title ?: __( 'What Our Customers Say', 'velvet-chili-restaurant-shop' );
 $area_image = $area_image ?: get_template_directory_uri() . '/assets/images/testimonial.jpg';
 
-// -------------------------------------------------------------
-// 4. Get individual testimonials
-// -------------------------------------------------------------
 $testimonials = new WP_Query( array(
     'post_type'      => 'obirsc_testimonial',
     'posts_per_page' => -1,
@@ -129,9 +117,6 @@ if ( ! $testimonials->have_posts() ) {
     return;
 }
 
-// -------------------------------------------------------------
-// 5. Dynamic output
-// -------------------------------------------------------------
 ?>
 <section class="testimonials-section" id="testimonials">
     <div class="testimonials-section__bg">
