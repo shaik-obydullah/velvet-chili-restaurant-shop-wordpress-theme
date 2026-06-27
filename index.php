@@ -13,14 +13,14 @@
 
         <?php
             the_posts_pagination([
-                'prev_text' => __('Previous', 'obydullah-restaurant'),
-                'next_text' => __('Next', 'obydullah-restaurant'),
+                'prev_text' => __('Previous', 'velvet-chili-restaurant-shop'),
+                'next_text' => __('Next', 'velvet-chili-restaurant-shop'),
             ]);
             ?>
 
         <?php else : ?>
 
-        <p><?php esc_html_e('No content found.', 'obydullah-restaurant'); ?></p>
+        <p><?php esc_html_e('No content found.', 'velvet-chili-restaurant-shop'); ?></p>
 
         <?php endif; ?>
 

@@ -32,7 +32,7 @@
             <?php endwhile; else : ?>
 
             <p class="page-default__empty">
-                <?php esc_html_e('No content found.', 'obydullah-restaurant'); ?>
+                <?php esc_html_e('No content found.', 'velvet-chili-restaurant-shop'); ?>
             </p>
 
             <?php endif; ?>

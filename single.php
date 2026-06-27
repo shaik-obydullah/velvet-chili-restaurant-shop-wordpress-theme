@@ -20,7 +20,7 @@
 
                     <?php
                     wp_link_pages([
-                        'before' => '<div class="page-links">' . __('Pages:', 'obydullah-restaurant'),
+                        'before' => '<div class="page-links">' . __('Pages:', 'velvet-chili-restaurant-shop'),
                         'after'  => '</div>',
                     ]);
                     ?>
@@ -58,7 +58,7 @@
             <?php if ( is_active_sidebar('sidebar-1') ) : ?>
             <?php dynamic_sidebar('sidebar-1'); ?>
             <?php else : ?>
-            <p><?php esc_html_e( 'No widgets added yet.', 'obydullah-restaurant' ); ?></p>
+            <p><?php esc_html_e( 'No widgets added yet.', 'velvet-chili-restaurant-shop' ); ?></p>
             <?php endif; ?>
 
         </aside>
