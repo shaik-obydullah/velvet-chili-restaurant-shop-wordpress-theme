@@ -20,6 +20,20 @@ document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
   /* ==========================================================================
+   0. Hash-link redirect – prefix bare hash links with the homepage URL
+   ========================================================================== */
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      var hash = this.getAttribute("href");
+      if (window.location.pathname !== "/") {
+        e.preventDefault();
+        window.location.href = window.location.origin + "/" + hash;
+      }
+    });
+  });
+
+  /* ==========================================================================
    1. Mobile Navigation
    ========================================================================== */
 

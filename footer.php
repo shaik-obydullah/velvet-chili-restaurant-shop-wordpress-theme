@@ -31,11 +31,11 @@ function vcrs_footer_fallback() {
                 <h4 class="site-footer__heading"><?php esc_html_e( 'Quick Links', 'velvet-chili-restaurant-shop' ); ?>
                 </h4>
                 <ul class="site-footer__links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Our Menu</a></li>
-                    <li><a href="#book">Book A Table</a></li>
-                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#about">About</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/menu/' ) ); ?>">Our Menu</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#book">Book A Table</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#testimonials">Reviews</a></li>
                 </ul>
             </div>
             <!-- Column 3: Contact -->

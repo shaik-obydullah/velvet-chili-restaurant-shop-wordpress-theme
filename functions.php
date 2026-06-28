@@ -235,12 +235,13 @@ function vcrs_render_nav_menu( $location, $class_prefix, $fallback ) {
  * Fallback for desktop primary menu (used when no menu is assigned).
  */
 function vcrs_primary_menu_fallback() {
+    $home = home_url( '/' );
     $links = [
-        'Home'         => home_url( '/' ),
-        'Chef Special' => '#chefSpecial',
-        'Our Menu'     => '#ourMenu',
-        'Testimonials' => '#testimonials',
-        'Book A Table' => '#book',
+        'Home'         => $home,
+        'Chef Special' => $home . '#chefSpecial',
+        'Our Menu'     => $home . '#ourMenu',
+        'Testimonials' => $home . '#testimonials',
+        'Book A Table' => $home . '#book',
     ];
     ?>
 <?php foreach ( $links as $label => $url ) : ?>
@@ -258,12 +259,13 @@ function vcrs_primary_menu_fallback() {
  * Fallback for mobile menu (used when no menu is assigned).
  */
 function vcrs_mobile_menu_fallback() {
+    $home = home_url( '/' );
     $links = [
-        'Home'         => home_url( '/' ),
-        'Chef Special' => '#chefSpecial',
-        'Our Menu'     => '#ourMenu',
-        'Testimonials' => '#testimonials',
-        'Book A Table' => '#book',
+        'Home'         => $home,
+        'Chef Special' => $home . '#chefSpecial',
+        'Our Menu'     => $home . '#ourMenu',
+        'Testimonials' => $home . '#testimonials',
+        'Book A Table' => $home . '#book',
     ];
     ?>
 <?php foreach ( $links as $label => $url ) : ?>
