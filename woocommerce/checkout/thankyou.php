@@ -69,91 +69,30 @@ if ( ! $order ) {
     margin: 0 auto;
 }
 
-/* Order Details Card */
+/* Cards */
 .woo-thankyou__card {
     background: white;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid var(--color-border);
-    padding: 2rem;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     margin-bottom: 2rem;
 }
 
 .woo-thankyou__card-title {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-soft-black);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-border);
-}
-
-.woo-thankyou__order-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-}
-
-.woo-thankyou__order-info-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.woo-thankyou__order-info-item .label {
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--color-text-secondary);
+    letter-spacing: 1.5px;
+    background: var(--color-soft-black);
+    margin: 0;
+    padding: 1rem 1.5rem;
 }
 
-.woo-thankyou__order-info-item .value {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--color-soft-black);
-}
-
-.order-status {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.order-status.completed {
-    background: #e8f5e9;
-    color: #2e7d32;
-}
-
-.order-status.processing {
-    background: #fff3e0;
-    color: #e65100;
-}
-
-.order-status.on-hold {
-    background: #fff8e1;
-    color: #f57f17;
-}
-
-.order-status.pending {
-    background: #fce4ec;
-    color: #c62828;
-}
-
-.order-status.cancelled {
-    background: #f5f5f5;
-    color: #757575;
-}
-
-.order-status.refunded {
-    background: #f5f5f5;
-    color: #757575;
-}
-
-.order-status.failed {
-    background: #fce4ec;
-    color: #c62828;
+.woo-thankyou__card-body {
+    padding: 1.5rem;
 }
 
 /* Order Items */
@@ -214,8 +153,8 @@ if ( ! $order ) {
 /* Order Totals */
 .woo-thankyou__totals {
     margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 2px solid var(--color-border);
+    padding: 1rem 0 0;
+    border-top: 1px dashed var(--color-border);
 }
 
 .woo-thankyou__total-row {
@@ -229,8 +168,8 @@ if ( ! $order ) {
     border-top: 2px solid var(--color-soft-black);
     margin-top: 0.5rem;
     padding-top: 0.75rem;
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 800;
+    font-size: 1.2rem;
 }
 
 .woo-thankyou__total-label {
@@ -262,12 +201,13 @@ if ( ! $order ) {
 }
 
 .woo-thankyou__customer-detail .label {
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--color-text-secondary);
     display: block;
+    margin-bottom: 0.15rem;
 }
 
 .woo-thankyou__customer-detail .value {
@@ -287,6 +227,10 @@ if ( ! $order ) {
 .woo-thankyou__actions .btn {
     min-width: 200px;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 /* Responsive */
@@ -295,8 +239,8 @@ if ( ! $order ) {
         padding: 5rem 1rem 3rem;
     }
 
-    .woo-thankyou__card {
-        padding: 1.5rem;
+    .woo-thankyou__card-body {
+        padding: 1.25rem;
     }
 
     .woo-thankyou__order-info {
@@ -325,7 +269,7 @@ if ( ! $order ) {
         <!-- Header -->
         <div class="woo-thankyou__header">
             <div class="woo-thankyou__icon">
-                <i class="fa-regular fa-circle-check"></i>
+                <i class="fa-solid fa-circle-check"></i>
             </div>
             <span
                 class="woo-thankyou__kicker"><?php esc_html_e( 'Order Confirmed', 'velvet-chili-restaurant-shop' ); ?></span>
@@ -336,79 +280,52 @@ if ( ! $order ) {
             </p>
         </div>
 
-        <!-- Order Details -->
-        <div class="woo-thankyou__card">
-            <h2 class="woo-thankyou__card-title">
-                <?php esc_html_e( 'Order Details', 'velvet-chili-restaurant-shop' ); ?>
-            </h2>
-            <div class="woo-thankyou__order-info">
-                <div class="woo-thankyou__order-info-item">
-                    <span class="label"><?php esc_html_e( 'Order Number', 'velvet-chili-restaurant-shop' ); ?></span>
-                    <span class="value">#<?php echo esc_html( $order->get_order_number() ); ?></span>
-                </div>
-                <div class="woo-thankyou__order-info-item">
-                    <span class="label"><?php esc_html_e( 'Date', 'velvet-chili-restaurant-shop' ); ?></span>
-                    <span class="value"><?php echo wc_format_datetime( $order->get_date_created() ); ?></span>
-                </div>
-                <div class="woo-thankyou__order-info-item">
-                    <span class="label"><?php esc_html_e( 'Total', 'velvet-chili-restaurant-shop' ); ?></span>
-                    <span class="value"><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></span>
-                </div>
-                <div class="woo-thankyou__order-info-item">
-                    <span class="label"><?php esc_html_e( 'Status', 'velvet-chili-restaurant-shop' ); ?></span>
-                    <span class="value">
-                        <span class="order-status <?php echo esc_attr( $order->get_status() ); ?>">
-                            <?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?>
-                        </span>
-                    </span>
-                </div>
-            </div>
-        </div>
-
         <!-- Order Items -->
         <div class="woo-thankyou__card">
             <h2 class="woo-thankyou__card-title"><?php esc_html_e( 'Items', 'velvet-chili-restaurant-shop' ); ?></h2>
-            <?php
-            $items = $order->get_items();
-            foreach ( $items as $item_id => $item ) :
-                $product = $item->get_product();
-                if ( ! $product ) continue;
-                ?>
-            <div class="woo-thankyou__order-item">
-                <div class="woo-thankyou__order-item-image">
-                    <?php echo wp_kses_post( $product->get_image( 'thumbnail' ) ); ?>
-                </div>
-                <div class="woo-thankyou__order-item-details">
-                    <h4 class="woo-thankyou__order-item-name"><?php echo esc_html( $item->get_name() ); ?></h4>
-                    <div class="woo-thankyou__order-item-meta">
-                        <?php echo wc_display_item_meta( $item, array( 'before' => '<p>', 'after' => '</p>' ) ); ?>
-                        <span class="woo-thankyou__order-item-quantity">×
-                            <?php echo esc_html( $item->get_quantity() ); ?></span>
+            <div class="woo-thankyou__card-body">
+                <?php
+                $items = $order->get_items();
+                foreach ( $items as $item_id => $item ) :
+                    $product = $item->get_product();
+                    if ( ! $product ) continue;
+                    ?>
+                <div class="woo-thankyou__order-item">
+                    <div class="woo-thankyou__order-item-image">
+                        <?php echo wp_kses_post( $product->get_image( 'thumbnail' ) ); ?>
+                    </div>
+                    <div class="woo-thankyou__order-item-details">
+                        <h4 class="woo-thankyou__order-item-name"><?php echo esc_html( $item->get_name() ); ?></h4>
+                        <div class="woo-thankyou__order-item-meta">
+                            <?php echo wc_display_item_meta( $item, array( 'before' => '<p>', 'after' => '</p>' ) ); ?>
+                            <span class="woo-thankyou__order-item-quantity">×
+                                <?php echo esc_html( $item->get_quantity() ); ?></span>
+                        </div>
+                    </div>
+                    <div class="woo-thankyou__order-item-price">
+                        <?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?>
                     </div>
                 </div>
-                <div class="woo-thankyou__order-item-price">
-                    <?php echo wp_kses_post( $order->get_formatted_line_subtotal( $item ) ); ?>
-                </div>
-            </div>
-            <?php endforeach; ?>
-
-            <!-- Totals -->
-            <div class="woo-thankyou__totals">
-                <?php foreach ( $order->get_order_item_totals() as $key => $total ) : ?>
-                <?php if ( 'order_total' === $key ) : ?>
-                <div class="woo-thankyou__total-row woo-thankyou__total-row--total">
-                    <span
-                        class="woo-thankyou__total-label woo-thankyou__total-label--total"><?php echo esc_html( $total['label'] ); ?></span>
-                    <span
-                        class="woo-thankyou__total-value woo-thankyou__total-value--total"><?php echo wp_kses_post( $total['value'] ); ?></span>
-                </div>
-                <?php else : ?>
-                <div class="woo-thankyou__total-row">
-                    <span class="woo-thankyou__total-label"><?php echo esc_html( $total['label'] ); ?></span>
-                    <span class="woo-thankyou__total-value"><?php echo wp_kses_post( $total['value'] ); ?></span>
-                </div>
-                <?php endif; ?>
                 <?php endforeach; ?>
+
+                <!-- Totals -->
+                <div class="woo-thankyou__totals">
+                    <?php foreach ( $order->get_order_item_totals() as $key => $total ) : ?>
+                    <?php if ( 'order_total' === $key ) : ?>
+                    <div class="woo-thankyou__total-row woo-thankyou__total-row--total">
+                        <span
+                            class="woo-thankyou__total-label woo-thankyou__total-label--total"><?php echo esc_html( $total['label'] ); ?></span>
+                        <span
+                            class="woo-thankyou__total-value woo-thankyou__total-value--total"><?php echo wp_kses_post( $total['value'] ); ?></span>
+                    </div>
+                    <?php else : ?>
+                    <div class="woo-thankyou__total-row">
+                        <span class="woo-thankyou__total-label"><?php echo esc_html( $total['label'] ); ?></span>
+                        <span class="woo-thankyou__total-value"><?php echo wp_kses_post( $total['value'] ); ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
 
@@ -417,32 +334,34 @@ if ( ! $order ) {
         <div class="woo-thankyou__card">
             <h2 class="woo-thankyou__card-title">
                 <?php esc_html_e( 'Customer Details', 'velvet-chili-restaurant-shop' ); ?></h2>
-            <div class="woo-thankyou__customer-details">
-                <div>
-                    <div class="woo-thankyou__customer-detail">
-                        <span class="label"><?php esc_html_e( 'Email', 'velvet-chili-restaurant-shop' ); ?></span>
-                        <span class="value"><?php echo esc_html( $order->get_billing_email() ); ?></span>
+            <div class="woo-thankyou__card-body">
+                <div class="woo-thankyou__customer-details">
+                    <div>
+                        <div class="woo-thankyou__customer-detail">
+                            <span class="label"><?php esc_html_e( 'Email', 'velvet-chili-restaurant-shop' ); ?></span>
+                            <span class="value"><?php echo esc_html( $order->get_billing_email() ); ?></span>
+                        </div>
+                        <div class="woo-thankyou__customer-detail">
+                            <span class="label"><?php esc_html_e( 'Phone', 'velvet-chili-restaurant-shop' ); ?></span>
+                            <span class="value"><?php echo esc_html( $order->get_billing_phone() ); ?></span>
+                        </div>
                     </div>
-                    <div class="woo-thankyou__customer-detail">
-                        <span class="label"><?php esc_html_e( 'Phone', 'velvet-chili-restaurant-shop' ); ?></span>
-                        <span class="value"><?php echo esc_html( $order->get_billing_phone() ); ?></span>
+                    <div>
+                        <div class="woo-thankyou__customer-detail">
+                            <span
+                                class="label"><?php esc_html_e( 'Billing Address', 'velvet-chili-restaurant-shop' ); ?></span>
+                            <span
+                                class="value"><?php echo wp_kses_post( $order->get_formatted_billing_address() ); ?></span>
+                        </div>
+                        <?php if ( $order->get_shipping_address_1() ) : ?>
+                        <div class="woo-thankyou__customer-detail">
+                            <span
+                                class="label"><?php esc_html_e( 'Shipping Address', 'velvet-chili-restaurant-shop' ); ?></span>
+                            <span
+                                class="value"><?php echo wp_kses_post( $order->get_formatted_shipping_address() ); ?></span>
+                        </div>
+                        <?php endif; ?>
                     </div>
-                </div>
-                <div>
-                    <div class="woo-thankyou__customer-detail">
-                        <span
-                            class="label"><?php esc_html_e( 'Billing Address', 'velvet-chili-restaurant-shop' ); ?></span>
-                        <span
-                            class="value"><?php echo wp_kses_post( $order->get_formatted_billing_address() ); ?></span>
-                    </div>
-                    <?php if ( $order->get_shipping_address_1() ) : ?>
-                    <div class="woo-thankyou__customer-detail">
-                        <span
-                            class="label"><?php esc_html_e( 'Shipping Address', 'velvet-chili-restaurant-shop' ); ?></span>
-                        <span
-                            class="value"><?php echo wp_kses_post( $order->get_formatted_shipping_address() ); ?></span>
-                    </div>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>

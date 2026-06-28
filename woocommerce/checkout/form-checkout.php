@@ -92,7 +92,7 @@ defined( 'ABSPATH' ) || exit;
 /* Checkout Grid */
 .woo-checkout__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.3fr 1fr;
     gap: 2.5rem;
     align-items: flex-start;
 }
@@ -100,29 +100,40 @@ defined( 'ABSPATH' ) || exit;
 .woo-checkout__col {
     background: white;
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid var(--color-border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .woo-checkout__section-title {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--color-soft-black);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-border);
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: var(--color-soft-black);
+    margin: -2rem -2rem 1.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 16px 16px 0 0;
 }
 
 /* Section headings (billing & shipping h3) */
 .woo-checkout__col h3 {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.15rem;
+    font-weight: 700;
     color: var(--color-soft-black);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--color-chili-red);
+}
+
+/* WooCommerce Shipping Fields */
+.woo-checkout .woocommerce-shipping-fields {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--color-border);
 }
 
 /* Shipping checkbox section */
@@ -182,12 +193,13 @@ defined( 'ABSPATH' ) || exit;
     width: 100%;
     padding: 0.75rem 1rem;
     border: 1px solid var(--color-border);
-    border-radius: 6px;
+    border-radius: 8px;
     font-family: var(--font-body);
     font-size: 0.95rem;
     background: var(--color-warm-white);
     color: var(--color-text-primary);
     transition: border-color var(--transition-fast);
+    box-sizing: border-box;
 }
 
 .woo-checkout .form-row input:focus,
@@ -195,6 +207,7 @@ defined( 'ABSPATH' ) || exit;
 .woo-checkout .form-row textarea:focus {
     outline: none;
     border-color: var(--color-chili-red);
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
 }
 
 /* Order Items */
@@ -270,14 +283,95 @@ defined( 'ABSPATH' ) || exit;
     color: var(--color-chili-red);
 }
 
+/* Order Review Table */
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table thead th {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+    padding: 0 0 0.75rem;
+    border-bottom: 2px solid var(--color-border);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: none;
+}
+
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table tbody td {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    background: none;
+}
+
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table tfoot th,
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table tfoot td {
+    padding: 0.5rem 0;
+    border: none;
+    background: none;
+    font-family: var(--font-body);
+}
+
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table tfoot th {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table tfoot td {
+    text-align: right;
+    font-weight: 600;
+    color: var(--color-soft-black);
+}
+
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table tfoot tr.order-total th {
+    border-top: 2px solid var(--color-soft-black);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    font-weight: 700;
+    color: var(--color-soft-black);
+    font-size: 1rem;
+}
+
+.woo-checkout .shop_table.woocommerce-checkout-review-order-table tfoot tr.order-total td {
+    border-top: 2px solid var(--color-soft-black);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    font-weight: 800;
+    color: var(--color-chili-red);
+    font-size: 1.2rem;
+}
+
+.woo-checkout .shop_table .product-quantity {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+}
+
 /* Place Order Button */
 #place_order {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     padding: 1rem 2rem;
     background: var(--color-chili-red);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 10px;
     font-family: var(--font-body);
     font-size: 1.1rem;
     font-weight: 700;
@@ -287,9 +381,19 @@ defined( 'ABSPATH' ) || exit;
     transition: all var(--transition-fast);
 }
 
+#place_order::after {
+    content: "→";
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
+}
+
 #place_order:hover {
-    background: var(--color-obydullah_restaurant-burgundy);
+    background: var(--color-soft-black);
     transform: translateY(-2px);
+}
+
+#place_order:hover::after {
+    transform: translateX(3px);
 }
 
 /* Payment Methods */
@@ -311,10 +415,11 @@ defined( 'ABSPATH' ) || exit;
 .woo-checkout .payment_box {
     margin-top: 0.5rem;
     padding: 1rem;
-    background: var(--color-cream);
-    border-radius: 6px;
+    background: var(--color-warm-white);
+    border-radius: 8px;
     font-size: 0.9rem;
     color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
 }
 
 /* Responsive */
@@ -336,6 +441,11 @@ defined( 'ABSPATH' ) || exit;
 
     .woo-checkout__col {
         padding: 1.5rem;
+    }
+
+    .woo-checkout__section-title {
+        margin: -1.5rem -1.5rem 1rem;
+        padding: 0.85rem 1.25rem;
     }
 }
 </style>
@@ -373,7 +483,7 @@ defined( 'ABSPATH' ) || exit;
 
             <div class="woo-checkout__grid">
 
-                <!-- Billing Details -->
+                <!-- Billing + Shipping Details -->
                 <div class="woo-checkout__col woo-checkout__col--details">
                     <?php if ( $checkout->get_checkout_fields() ) : ?>
 
@@ -381,16 +491,12 @@ defined( 'ABSPATH' ) || exit;
 
                         <div id="customer_details">
                             <?php do_action( 'woocommerce_checkout_billing' ); ?>
+                            <?php do_action( 'woocommerce_checkout_shipping' ); ?>
                         </div>
 
                         <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
                     <?php endif; ?>
-                </div>
-
-                <!-- Shipping -->
-                <div class="woo-checkout__col woo-checkout__col--shipping">
-                    <?php do_action( 'woocommerce_checkout_shipping' ); ?>
                 </div>
 
                 <!-- Order Review -->

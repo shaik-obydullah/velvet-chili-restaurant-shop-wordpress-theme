@@ -131,6 +131,14 @@ function vcrs_setup() {
 add_action( 'after_setup_theme', 'vcrs_setup' );
 
 
+/**
+ * Prevent WooCommerce default order details table from appearing
+ * after the custom thank you template.
+ */
+add_action( 'init', function() {
+    remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 );
+} );
+
 /* ======================================================
  *  3. Menus
  * ====================================================== */
@@ -355,6 +363,17 @@ function vcrs_cart_fragments( $fragments ) {
     }
     return $fragments;
 }
+
+/**
+ * Redirect /shop to /menu so the default WooCommerce shop
+ * archive is never accessed directly.
+ */
+add_action( 'template_redirect', function() {
+    if ( is_shop() ) {
+        wp_redirect( home_url( '/menu/' ), 301 );
+        exit;
+    }
+} );
 
 /* ======================================================
  *  6. Customizer Settings

@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 .woocommerce-error,
 .woocommerce-info {
     list-style: none;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2.5rem 1rem 1.5rem;
     margin: 0 0 0.75rem;
     background: white;
     border-radius: 12px;
@@ -33,11 +33,10 @@ defined( 'ABSPATH' ) || exit;
     color: var(--color-text-primary);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
     gap: 0.75rem;
     animation: slideIn 0.4s ease;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    position: relative;
 }
 
 @keyframes slideIn {
@@ -58,12 +57,11 @@ defined( 'ABSPATH' ) || exit;
     background: #e8f5e9;
     color: #2e7d32;
 }
-
 .woocommerce-message::before {
-    content: "✓ ";
-    font-weight: 700;
-    font-size: 1.1rem;
+    content: none;
 }
+
+
 
 .woocommerce-error {
     border-left-color: var(--color-chili-red);
@@ -136,16 +134,21 @@ defined( 'ABSPATH' ) || exit;
     background: none;
     border: none;
     color: var(--color-text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    padding: 0 0.25rem;
-    transition: color var(--transition-fast);
-    flex-shrink: 0;
+    padding: 0.25rem 0.4rem;
+    transition: color var(--transition-fast), background var(--transition-fast);
     line-height: 1;
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    border-radius: 4px;
 }
 
 .woo-notice-close:hover {
     color: var(--color-soft-black);
+    background: rgba(0, 0, 0, 0.05);
 }
 
 .woo-cart {
@@ -486,48 +489,53 @@ defined( 'ABSPATH' ) || exit;
 
 .cart-totals {
     background: white;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid var(--color-border);
-    padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .cart_totals>h2 {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--color-soft-black);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-border);
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: var(--color-soft-black);
+    margin: 0;
+    padding: 1rem 1.5rem;
 }
 
 .cart_totals table.shop_table {
     width: 100%;
     border-collapse: collapse;
+    border: none;
+    padding: 0 1.5rem;
+}
+
+.cart_totals table.shop_table th,
+.cart_totals table.shop_table td {
+    border: none;
 }
 
 .cart_totals table.shop_table tr {
     display: flex;
     justify-content: space-between;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: 0.85rem 0;
 }
 
-.cart_totals table.shop_table tr:last-of-type {
-    border-bottom: none;
+.cart_totals table.shop_table tr.cart-subtotal {
+    border-bottom: 1px dashed var(--color-border);
 }
 
 .cart_totals table.shop_table tr.order-total {
-    padding: 1rem 0;
-    margin-top: 0.5rem;
-    border-top: 2px solid var(--color-soft-black);
-    border-bottom: none;
+    padding: 1.25rem 0;
 }
 
 .cart_totals table.shop_table th {
     font-family: var(--font-body);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 400;
     color: var(--color-text-secondary);
 }
@@ -539,42 +547,53 @@ defined( 'ABSPATH' ) || exit;
 }
 
 .cart_totals table.shop_table tr.order-total th {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--color-soft-black);
 }
 
 .cart_totals table.shop_table tr.order-total td {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.35rem;
+    font-weight: 800;
     color: var(--color-chili-red);
 }
 
 .cart_totals .wc-proceed-to-checkout {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
+    padding: 0 1.5rem 1.5rem;
 }
 
 .cart_totals .wc-proceed-to-checkout .checkout-button {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     width: 100%;
-    text-align: center;
     padding: 1rem;
     background: var(--color-chili-red);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-family: var(--font-body);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    transition: background var(--transition-fast);
+    transition: background var(--transition-fast), transform var(--transition-fast);
     box-sizing: border-box;
+}
+
+.cart_totals .wc-proceed-to-checkout .checkout-button::after {
+    content: "→";
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
 }
 
 .cart_totals .wc-proceed-to-checkout .checkout-button:hover {
     background: var(--color-soft-black);
+    transform: translateY(-1px);
+}
+
+.cart_totals .wc-proceed-to-checkout .checkout-button:hover::after {
+    transform: translateX(3px);
 }
 
 .woocommerce-shipping-calculator {
@@ -808,7 +827,7 @@ defined( 'ABSPATH' ) || exit;
                                 <a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>"
                                     class="cart-item__remove"
                                     aria-label="<?php esc_attr_e( 'Remove item', 'velvet-chili-restaurant-shop' ); ?>">
-                                    <i class="fa-regular fa-trash-can"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </div>
 
@@ -881,7 +900,7 @@ defined( 'ABSPATH' ) || exit;
                     <div class="woo-cart__update">
                         <button type="submit" class="btn btn--outline-dark" name="update_cart"
                             value="<?php esc_attr_e( 'Update cart', 'velvet-chili-restaurant-shop' ); ?>">
-                            <i class="fa-regular fa-rotate-right"></i>
+                            <i class="fa-solid fa-rotate-right"></i>
                             <?php esc_html_e( 'Update Cart', 'velvet-chili-restaurant-shop' ); ?>
                         </button>
                         <?php do_action( 'woocommerce_cart_actions' ); ?>
