@@ -6,130 +6,138 @@
 **Tested up to:** 7.0
 **Requires PHP:** 7.4
 **Version:** 1.0
-**License:** GPLv2 or later
-**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 
 ---
 
 ## 🍽️ Description
 
-**Velvet Chili** is a modern and elegant WordPress theme crafted specifically for restaurants, cafés, food trucks, and hospitality businesses.
+**Velvet Chili Restaurant Shop** is a modern, lightweight, and conversion-focused WordPress theme designed specifically for restaurants, cafés, food trucks, and hospitality businesses.
 
-It combines clean aesthetics with practical functionality, allowing you to showcase your menu, highlight special dishes, and provide a seamless experience for customers—whether they are browsing or placing orders online.
+It provides a clean and elegant interface to showcase your food menu, highlight featured dishes, and enable online ordering through WooCommerce.
 
-Built with performance and usability in mind, Velvet Chili ensures fast loading speeds, mobile-first responsiveness, and smooth WooCommerce integration for online food ordering.
+Built with performance, usability, and flexibility in mind, the theme ensures a smooth experience across all devices while maintaining a strong focus on real-world business needs.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-### 🎨 Modern & Restaurant-Focused Design
+### 🎨 Restaurant-Focused Design
 
-* Carefully designed layout tailored for food businesses
-* Visually appealing sections for dishes, offers, and ambiance
-* Clean typography and balanced spacing for readability
+- Clean, modern layout tailored for food businesses
+- Dedicated sections for menu, offers, and highlights
+- Balanced typography and visual hierarchy
 
-### 📱 Fully Responsive & Mobile-Optimized
+### 📱 Fully Responsive
 
-* Mobile-first design approach
-* Optimized layouts for phones, tablets, and desktops
-* Touch-friendly navigation and buttons
+- Mobile-first design approach
+- Optimized for all screen sizes
+- Touch-friendly navigation
 
-### ⚡ Lightweight & Fast Performance
+### ⚡ Performance Optimized
 
-* Optimized CSS and minimal scripts
-* Fast page load times for better user experience
-* Built with performance best practices
+- Lightweight structure
+- Minimal dependencies
+- Fast loading times
 
-### 🛒 WooCommerce Compatibility
+### 🛒 WooCommerce Integration
 
-* Seamless integration with WooCommerce for online ordering
-* Styled shop, product, cart, and checkout pages
-* Clean product grid for food items and menus
-* Ready for extensions like payments, delivery, and bookings
+- Full compatibility with WooCommerce
+- Custom styled shop and product pages
+- Cart and checkout support
+- Ideal for online food ordering
 
-### 🍔 Menu & Food Showcase Sections
+### 🍔 Menu Showcase
 
-* Dedicated menu layout for food items
-* Highlight chef specials and featured dishes
-* Structured display for categories (starters, mains, desserts)
+- Structured layout for food items
+- Category-based display (starters, mains, desserts, drinks)
+- Highlight featured dishes and specials
 
-### 🧾 Conversion-Focused Layout
+### 🧾 Conversion-Oriented
 
-* Strategic call-to-action sections (Order Now, Book Table)
-* Clear contact and location display
-* Designed to guide visitors toward taking action
+- Clear call-to-action sections
+- Optimized layout for user engagement
+- Designed to increase orders and bookings
 
-### 🧰 Customization Options
+### 🧰 Easy Customization
 
-* Easy customization via WordPress Customizer
-* Control over contact information and key sections
-* Flexible homepage structure
+- WordPress Customizer support
+- Flexible homepage sections
+- Control layout and content easily
 
-### 🔍 SEO-Friendly Structure
+### 🔍 SEO Ready
 
-* Clean and semantic HTML markup
-* Optimized heading hierarchy
-* Compatible with popular SEO plugins
+- Semantic HTML structure
+- Optimized headings
+- Compatible with SEO plugins
 
-### ♿ Accessibility Considerations
+### ♿ Accessibility Ready
 
-* Keyboard navigable structure
-* Screen reader-friendly markup
-* Skip-to-content support recommended
-
-### 🧭 Navigation & Usability
-
-* Custom menu support
-* Logical content hierarchy
-* Smooth browsing experience
+- Keyboard navigation support
+- Screen reader-friendly markup
 
 ---
 
 ## 📦 Installation
 
-1. Upload the theme folder to `/wp-content/themes/`
-2. Activate the theme via **Appearance → Themes**
-3. Install recommended plugins if prompted
-4. Customize via **Appearance → Customize**
+1. Upload the theme to `/wp-content/themes/`
+2. Activate via **Appearance → Themes**
+3. Install recommended plugins
+4. Configure via **Appearance → Customize**
 
 ---
 
 ## 🔌 Recommended Plugins
 
-* Contact Form 7
-* WooCommerce (for online ordering functionality)
-* Obydullah Restaurant Shop Core – https://wordpress.org/plugins/obydullah-restaurant-shop-core/
+- Contact Form 7
+- WooCommerce
 
-Enhance your website functionality with the Obydullah Restaurant Shop Core plugin, which adds custom post types, additional features, and extended functionality tailored specifically for the Velvet Chili Restaurant Shop theme.
+### Obydullah Restaurant Shop Core
+
+https://wordpress.org/plugins/obydullah-restaurant-shop-core/
+
+#### About the Core Plugin
+
+The **Obydullah Restaurant Shop Core** plugin is the official companion plugin for this theme. It extends functionality and provides essential restaurant-specific features.
+
+**Key features include:**
+
+- Custom Post Types (Menu, Specials, Testimonials)
+- Menu management system (separate from WooCommerce if needed)
+- Hero slider and homepage sections
+- Table reservation system (AJAX-based)
+- Opening hours management
+- Structured content blocks for pages
+- Global settings and footer options
+
+> The plugin is optional but highly recommended for full functionality.
 
 ---
 
 ## 🎛️ Customization
 
-You can customize the theme via:
+All theme settings are available via:
 
 **Appearance → Customize**
 
-Available options include:
+You can control:
 
-* Contact information
-* Homepage sections
-* Layout adjustments
-* Colors and visual settings
+- Contact information
+- Homepage sections
+- Layout and structure
+- Colors and visual styling
 
 ---
 
 ## 🛍️ WooCommerce Support
 
-Velvet Chili includes essential WooCommerce support:
+Velvet Chili includes built-in support for WooCommerce:
 
-* Styled shop and product pages
-* Responsive product grid layout
-* Cart and checkout page compatibility
-* Optimized layout for food ordering
+- Styled shop and product pages
+- Responsive product grid
+- Cart and checkout pages
+- Optimized for food ordering workflows
 
-> Note: Advanced features such as AJAX cart, wishlist, and product filters can be added using WooCommerce extensions.
+> Additional features like AJAX cart, filters, and wishlist can be added using WooCommerce extensions.
 
 ---
 
@@ -137,16 +145,23 @@ Velvet Chili includes essential WooCommerce support:
 
 ### 1.0
 
-* Initial release
-* Core theme features implemented
-* Responsive layout completed
-* Customizer settings added
-* WooCommerce compatibility added
+- Initial release
+- Core design and layout implemented
+- Responsive system completed
+- Customizer options added
+- WooCommerce integration included
 
 ---
 
 ## 🙏 Credits
 
-* Font Awesome (locally hosted)
-* Google Fonts (self-hosted)
-* Unsplash (demo images)
+- Font Awesome (locally hosted)
+- Google Fonts (self-hosted)
+- Unsplash (demo images)
+
+---
+
+## 🧑‍💻 Author
+
+Developed by **Obydullah**
+Focused on building practical, real-world WordPress solutions for businesses.
