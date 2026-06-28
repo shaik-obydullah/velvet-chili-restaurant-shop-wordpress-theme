@@ -64,6 +64,31 @@ function vcrs_assets() {
 }
 add_action('wp_enqueue_scripts', 'vcrs_assets');
 
+add_action( 'wp_enqueue_scripts', function() {
+	if ( is_product() && wp_script_is( 'wc-add-to-cart', 'enqueued' ) ) {
+		wp_add_inline_script( 'wc-add-to-cart', '
+jQuery(function($) {
+  $("form.cart").on("submit", function(e) {
+    var $btn = $(this).find(".single_add_to_cart_button.ajax_add_to_cart");
+    if (!$btn.length) return;
+    e.preventDefault();
+    var data = {
+      product_id: $btn.data("product_id"),
+      quantity:   $(this).find("input[name=\"quantity\"]").val() || 1
+    };
+    $btn.removeClass("added").addClass("loading");
+    $.post(wc_add_to_cart_params.wc_ajax_url.toString().replace("%%endpoint%%","add_to_cart"), data)
+      .done(function(r) {
+        $btn.removeClass("loading");
+        if (r.error && r.product_url) { window.location = r.product_url; return; }
+        $(document.body).trigger("added_to_cart", [r.fragments, r.cart_hash, $btn]);
+      });
+  });
+});
+' );
+	}
+} );
+
 function vcrs_enqueue_booking_assets() {
     wp_enqueue_script(
         'vcrs-booking',                        

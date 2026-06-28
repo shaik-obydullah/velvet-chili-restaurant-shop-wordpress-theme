@@ -113,6 +113,9 @@ while ( have_posts() ) {
     <!-- Upsells -->
     <?php woocommerce_upsell_display(); ?>
 
+    <!-- Related Products -->
+    <?php woocommerce_output_related_products( array( 'posts_per_page' => 4, 'columns' => 4 ) ); ?>
+
 </div>
 
 <?php
