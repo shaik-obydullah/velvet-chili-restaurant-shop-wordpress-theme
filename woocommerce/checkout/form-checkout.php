@@ -422,6 +422,42 @@ defined( 'ABSPATH' ) || exit;
     border: 1px solid var(--color-border);
 }
 
+/* Create Account Checkbox */
+.woo-checkout .create-account {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--color-border);
+}
+
+.woo-checkout .create-account .woocommerce-form__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-soft-black);
+    cursor: pointer;
+    font-family: var(--font-body);
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.woo-checkout .create-account input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-chili-red);
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+/* Account password fields (shown when create account is checked) */
+.woo-checkout .create-account + .create-account-password-fields {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
 /* Responsive */
 @media screen and (max-width: 992px) {
     .woo-checkout__grid {
