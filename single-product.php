@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Product Page
+ * Single Product Page – self-contained HTML + inline CSS
  *
  * @package Velvet_Chili_Restaurant_Shop
  * @since   1.0.0
@@ -24,6 +24,7 @@ while ( have_posts() ) {
 	}
 	?>
 
+
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 
     <section class="product-detail">
@@ -38,16 +39,19 @@ while ( have_posts() ) {
 
                 <!-- Product Image -->
                 <div class="product-detail__image">
-                    <?php woocommerce_show_product_images(); ?>
+                    <?php
+                        woocommerce_show_product_images();
+                        woocommerce_show_product_sale_flash();
+                    ?>
                 </div>
 
                 <!-- Product Info -->
                 <div class="product-detail__info">
 
                     <?php
-						$cats = wc_get_product_category_list( $product->get_id() );
-						if ( $cats ) :
-							?>
+                        $cats = wc_get_product_category_list( $product->get_id() );
+                        if ( $cats ) :
+                    ?>
                     <span class="product-detail__kicker"><?php echo wp_kses_post( $cats ); ?></span>
                     <?php endif; ?>
 
@@ -58,11 +62,9 @@ while ( have_posts() ) {
                     </div>
 
                     <?php if ( $product->is_in_stock() ) : ?>
-                    <span
-                        class="stock-status in-stock"><?php esc_html_e( 'In Stock', 'velvet-chili-restaurant-shop' ); ?></span>
+                    <span class="stock-status in-stock"><?php esc_html_e( 'In Stock', 'velvet-chili-restaurant-shop' ); ?></span>
                     <?php else : ?>
-                    <span
-                        class="stock-status out-of-stock"><?php esc_html_e( 'Out of Stock', 'velvet-chili-restaurant-shop' ); ?></span>
+                    <span class="stock-status out-of-stock"><?php esc_html_e( 'Out of Stock', 'velvet-chili-restaurant-shop' ); ?></span>
                     <?php endif; ?>
 
                     <div class="product-detail__description">
@@ -70,9 +72,9 @@ while ( have_posts() ) {
                     </div>
 
                     <?php
-						$tags = get_the_terms( $product->get_id(), 'product_tag' );
-						if ( $tags && ! is_wp_error( $tags ) ) :
-							?>
+                        $tags = get_the_terms( $product->get_id(), 'product_tag' );
+                        if ( $tags && ! is_wp_error( $tags ) ) :
+                    ?>
                     <div class="product-detail__tags">
                         <?php foreach ( $tags as $tag ) : ?>
                         <span class="tag"><?php echo esc_html( $tag->name ); ?></span>
@@ -85,9 +87,9 @@ while ( have_posts() ) {
                     </div>
 
                     <?php
-						$chef_note = get_post_meta( $product->get_id(), 'chef_note', true );
-						if ( $chef_note ) :
-							?>
+                        $chef_note = get_post_meta( $product->get_id(), 'chef_note', true );
+                        if ( $chef_note ) :
+                    ?>
                     <div class="product-detail__chef-note">
                         <h3><?php esc_html_e( 'Chef\'s Note', 'velvet-chili-restaurant-shop' ); ?></h3>
                         <p><?php echo esc_html( $chef_note ); ?></p>
@@ -108,13 +110,8 @@ while ( have_posts() ) {
         </div>
     </section>
 
-    <!-- Upsells & Related -->
-    <?php
-		woocommerce_upsell_display();
-		woocommerce_output_related_products();
-
-
-		?>
+    <!-- Upsells -->
+    <?php woocommerce_upsell_display(); ?>
 
 </div>
 

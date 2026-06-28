@@ -15,9 +15,10 @@
  * 2. Theme Setup
  * 3. Menus
  * 4. Fallback Menus
- * 5. Cart
- * 6. Customizer Settings
- * 7. Admin Notice
+ * 5. WooCommerce: Remove default single-product hooks
+ * 6. Cart
+ * 7. Customizer Settings
+ * 8. Admin Notice
  */
 
 /* ======================================================
@@ -83,6 +84,7 @@ add_action( 'wp_enqueue_scripts', 'vcrs_enqueue_booking_assets' );
    2. Theme Setup
 ====================================================== */
 function vcrs_setup() {
+    add_theme_support( 'woocommerce' );
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'automatic-feed-links' );
@@ -310,6 +312,12 @@ function vcrs_render_cart() {
  */
 if ( class_exists( 'WooCommerce' ) ) {
     add_filter( 'woocommerce_add_to_cart_fragments', 'vcrs_cart_fragments' );
+    add_filter( 'woocommerce_product_tabs', 'vcrs_product_tabs' );
+}
+
+function vcrs_product_tabs( $tabs ) {
+    unset( $tabs['additional_information'] );
+    return $tabs;
 }
 
 function vcrs_cart_fragments( $fragments ) {
