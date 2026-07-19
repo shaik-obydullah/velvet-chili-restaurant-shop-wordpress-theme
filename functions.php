@@ -65,7 +65,7 @@ function vcrs_assets() {
 add_action('wp_enqueue_scripts', 'vcrs_assets');
 
 add_action( 'wp_enqueue_scripts', function() {
-	if ( is_product() && wp_script_is( 'wc-add-to-cart', 'enqueued' ) ) {
+	if ( class_exists( 'WooCommerce' ) && is_product() && wp_script_is( 'wc-add-to-cart', 'enqueued' ) ) {
 		wp_add_inline_script( 'wc-add-to-cart', '
 jQuery(function($) {
   $("form.cart").on("submit", function(e) {
@@ -136,7 +136,9 @@ add_action( 'after_setup_theme', 'vcrs_setup' );
  * after the custom thank you template.
  */
 add_action( 'init', function() {
-    remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 );
+    if ( class_exists( 'WooCommerce' ) ) {
+        remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 );
+    }
 } );
 
 /* ======================================================
@@ -172,7 +174,7 @@ function vcrs_get_nav_menu_items( $location ) {
  */
 function vcrs_is_menu_item_active( $item ) {
     // Get current URL without query args for comparison
-    $current_url = untrailingslashit( home_url( add_query_arg( array(), $_SERVER['REQUEST_URI'] ) ) );
+    $current_url = untrailingslashit( home_url( add_query_arg( array(), wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) );
     $item_url    = untrailingslashit( $item->url );
 
     // If it's the front page
@@ -371,7 +373,7 @@ function vcrs_cart_fragments( $fragments ) {
  * archive is never accessed directly.
  */
 add_action( 'template_redirect', function() {
-    if ( is_shop() ) {
+    if ( class_exists( 'WooCommerce' ) && is_shop() ) {
         wp_redirect( home_url( '/menu/' ), 301 );
         exit;
     }

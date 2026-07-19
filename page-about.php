@@ -10,6 +10,7 @@ get_header();
 // -------------------------------------------------------------
 // 1. Define static fallback
 // -------------------------------------------------------------
+if ( ! function_exists( 'vcrs_static_about_page' ) ) {
 function vcrs_static_about_page() {
     ?>
 <section class="about-page" id="about">
@@ -93,6 +94,7 @@ function vcrs_static_about_page() {
 </section>
 <?php
 }
+} // endif function_exists
 
 // -------------------------------------------------------------
 // 2. Check if plugin is active

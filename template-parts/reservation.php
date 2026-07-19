@@ -6,6 +6,7 @@
  * - Static fallback when plugin inactive or no data
  */
 
+if ( ! function_exists( 'vcrs_reservation_fallback_hours' ) ) {
 function vcrs_reservation_fallback_hours() {
     return array(
         array( 'day' => 'Monday – Thursday', 'time' => '5 PM – 10 PM' ),
@@ -14,6 +15,7 @@ function vcrs_reservation_fallback_hours() {
         array( 'day' => 'Sunday', 'time' => '12 PM – 9 PM' ),
     );
 }
+} // endif function_exists
 
 $hours = array();
 $note  = '';

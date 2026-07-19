@@ -6,6 +6,7 @@
 // -------------------------------------------------------------
 // 1. Define static fallback (if plugin inactive or no data)
 // -------------------------------------------------------------
+if ( ! function_exists( 'vcrs_footer_fallback' ) ) {
 function vcrs_footer_fallback() {
     ?>
 <footer class="site-footer" id="siteFooter">
@@ -61,6 +62,7 @@ function vcrs_footer_fallback() {
 </footer>
 <?php
 }
+} // endif function_exists
 
 // -------------------------------------------------------------
 // 2. Check if plugin is active

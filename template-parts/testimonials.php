@@ -6,6 +6,7 @@
  * - Falls back to static HTML when no dynamic data available
  */
 
+if ( ! function_exists( 'vcrs_default_testimonials_html' ) ) {
 function vcrs_default_testimonials_html() {
     ?>
 <section class="testimonials-section" id="testimonials">
@@ -78,6 +79,7 @@ function vcrs_default_testimonials_html() {
 </section>
 <?php
 }
+} // endif function_exists
 
 if ( ! defined( 'OBIRSC_VERSION' ) ) {
     vcrs_default_testimonials_html();

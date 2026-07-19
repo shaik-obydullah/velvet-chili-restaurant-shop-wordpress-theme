@@ -6,6 +6,15 @@
 
 get_header();
 
+if ( ! class_exists( 'WooCommerce' ) ) {
+    echo '<div class="menu-page" style="padding:6rem 1.5rem 3rem;text-align:center;">';
+    echo '<h2>' . esc_html__( 'This page requires WooCommerce.', 'velvet-chili-restaurant-shop' ) . '</h2>';
+    echo '<p>' . esc_html__( 'Please install and activate the WooCommerce plugin to view the menu.', 'velvet-chili-restaurant-shop' ) . '</p>';
+    echo '</div>';
+    get_footer();
+    return;
+}
+
 // Get product categories (only those with products)
 $categories = get_terms( array(
     'taxonomy'   => 'product_cat',

@@ -28,7 +28,7 @@
                     <?php
                     $tags = get_the_tag_list('<div class="post-tags">Tags: ', ', ', '</div>');
                     if ($tags) {
-                        echo $tags;
+                        echo wp_kses_post( $tags );
                     }
                     ?>
 

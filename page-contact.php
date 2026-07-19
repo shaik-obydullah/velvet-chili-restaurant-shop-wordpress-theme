@@ -10,6 +10,7 @@ get_header();
 // -------------------------------------------------------------
 // 1. Helper: Get first CF7 shortcode (if CF7 active)
 // -------------------------------------------------------------
+if ( ! function_exists( 'vcrs_get_first_cf7_shortcode' ) ) {
 function vcrs_get_first_cf7_shortcode() {
     if ( ! defined( 'WPCF7_VERSION' ) ) {
         return '';
@@ -24,10 +25,12 @@ function vcrs_get_first_cf7_shortcode() {
     }
     return '[contact-form-7 id="' . (int) $forms[0]->ID . '" title="' . esc_attr( $forms[0]->post_title ) . '"]';
 }
+} // endif function_exists
 
 // -------------------------------------------------------------
 // 2. Define static fallback data
 // -------------------------------------------------------------
+if ( ! function_exists( 'vcrs_static_contact_page' ) ) {
 function vcrs_static_contact_page() {
     ?>
 <section class="contact-page" id="contact">
@@ -95,9 +98,9 @@ function vcrs_static_contact_page() {
 </section>
 <?php
 }
+} // endif function_exists
 
-// -------------------------------------------------------------
-// 3. Check if plugin is active
+// -------------------------------------------------------------// 3. Check if plugin is active
 // -------------------------------------------------------------
 if ( ! defined( 'OBIRSC_VERSION' ) ) {
     vcrs_static_contact_page();
