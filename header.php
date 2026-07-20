@@ -12,28 +12,32 @@
 
     <header class="site-header" id="siteHeader">
         <div class="header__container">
-            <!-- Logo -->
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__logo"
-                aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-                <span class="logo__icon"><i class="fa-solid fa-pepper-hot"></i></span>
-                <span class="logo__text">
-                    <span class="logo__text--accent"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
-                </span>
-            </a>
+            <!-- Logo (left column) -->
+            <div class="header__logo-area">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__logo"
+                    aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+                    <span class="logo__icon"><i class="fa-solid fa-pepper-hot"></i></span>
+                    <span class="logo__text">
+                        <span class="logo__text--accent"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></span>
+                    </span>
+                </a>
+            </div>
 
-            <!-- Desktop Navigation -->
+            <!-- Desktop Navigation (center column) -->
             <nav class="nav nav--desktop" id="desktopNav" aria-label="Main navigation">
                 <ul class="nav__list">
                     <?php vcrs_render_nav_menu( 'primary', 'nav', 'vcrs_primary_menu_fallback' ); ?>
                 </ul>
             </nav>
 
-            <!-- Right actions: Cart + Hamburger -->
-            <div class="header-actions">
+            <!-- Right actions: Cart (right column) -->
+            <div class="header__actions-area">
                 <!-- Shopping Cart -->
                 <?php vcrs_render_cart(); ?>
+            </div>
 
-                <!-- Hamburger Toggle Button (Mobile) -->
+            <!-- Hamburger Toggle Button (mobile only) -->
+            <div class="header__hamburger-area">
                 <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
                     type="button">
                     <span class="hamburger__line"></span>
