@@ -51,7 +51,7 @@ function vcrs_assets() {
         'vcrs-theme',
         get_template_directory_uri() . '/assets/css/theme.css',
         ['vcrs-base'],
-        '1.0'
+        '1.1'
     );
 
     wp_enqueue_script(
