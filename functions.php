@@ -294,6 +294,7 @@ function vcrs_create_cart_page() {
     }
     
     $cart_page_id = wc_get_page_id( 'cart' );
+    $checkout_page_id = wc_get_page_id( 'checkout' );
     
     if ( ! $cart_page_id || get_post_status( $cart_page_id ) !== 'publish' ) {
         $cart_page = array(
@@ -307,6 +308,37 @@ function vcrs_create_cart_page() {
         
         if ( $new_page_id && ! is_wp_error( $new_page_id ) ) {
             update_option( 'woocommerce_cart_page_id', $new_page_id );
+        }
+    } else {
+        $existing_content = get_post_field( 'post_content', $cart_page_id );
+        if ( $existing_content && strpos( $existing_content, 'wp:woocommerce/cart' ) !== false ) {
+            wp_update_post( array(
+                'ID'            => $cart_page_id,
+                'post_content'  => '[woocommerce_cart]',
+            ) );
+        }
+    }
+    
+    if ( ! $checkout_page_id || get_post_status( $checkout_page_id ) !== 'publish' ) {
+        $checkout_page = array(
+            'post_title'   => __( 'Checkout', 'velvet-chili-restaurant-shop' ),
+            'post_content' => '[woocommerce_checkout]',
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+        );
+        
+        $new_page_id = wp_insert_post( $checkout_page );
+        
+        if ( $new_page_id && ! is_wp_error( $new_page_id ) ) {
+            update_option( 'woocommerce_checkout_page_id', $new_page_id );
+        }
+    } else {
+        $existing_content = get_post_field( 'post_content', $checkout_page_id );
+        if ( $existing_content && strpos( $existing_content, 'wp:woocommerce/checkout' ) !== false ) {
+            wp_update_post( array(
+                'ID'            => $checkout_page_id,
+                'post_content'  => '[woocommerce_checkout]',
+            ) );
         }
     }
 }
