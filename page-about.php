@@ -18,7 +18,7 @@ function vcrs_static_about_page() {
         <div class="about-page__header text-center">
             <span class="about-page__kicker"><?php esc_html_e( 'Our Story', 'velvet-chili-restaurant-shop' ); ?></span>
             <h2 class="about-page__title">
-                <?php esc_html_e( 'The Heart of Obydullah Restaurant', 'velvet-chili-restaurant-shop' ); ?></h2>
+                <?php esc_html_e( 'The Heart of The Velvet Chili Restaurant', 'velvet-chili-restaurant-shop' ); ?></h2>
         </div>
         <div class="about-page__grid">
             <div class="about-page__text">
@@ -30,7 +30,7 @@ function vcrs_static_about_page() {
                 <h3 class="about-page__subtitle">
                     <?php esc_html_e( 'Our Philosophy', 'velvet-chili-restaurant-shop' ); ?></h3>
                 <p class="about-page__body">
-                    <?php esc_html_e( 'At Obydullah Restaurant, we believe that great food is about balance – heat and sweetness, tradition and innovation, comfort and elegance. We source our chilies from small family farms, slow‑cook our meats for hours, and treat every guest like family. Dining here is not just a meal; it\'s a journey through the rich tapestry of chili culture.', 'velvet-chili-restaurant-shop' ); ?>
+                    <?php esc_html_e( 'At The Velvet Chili Restaurant, we believe that great food is about balance – heat and sweetness, tradition and innovation, comfort and elegance. We source our chilies from small family farms, slow‑cook our meats for hours, and treat every guest like family. Dining here is not just a meal; it\'s a journey through the rich tapestry of chili culture.', 'velvet-chili-restaurant-shop' ); ?>
                 </p>
             </div>
             <div class="about-page__slider">

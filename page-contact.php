@@ -76,14 +76,14 @@ function vcrs_static_contact_page() {
             <div class="contact-page__info">
                 <div class="contact-info">
                     <h3 class="contact-info__title">
-                        <?php esc_html_e( 'Obydullah Restaurant', 'velvet-chili-restaurant-shop' ); ?></h3>
+                        <?php esc_html_e( 'The Velvet Chili Restaurant', 'velvet-chili-restaurant-shop' ); ?></h3>
                     <ul class="contact-info__list">
                         <li><i class="fa-solid fa-location-dot"></i>
                             <span><?php esc_html_e( '427 Spice Avenue, Gastronomy District, NY 10012', 'velvet-chili-restaurant-shop' ); ?></span>
                         </li>
                         <li><i class="fa-solid fa-phone"></i> <a href="tel:+15551234567">(555) 123-4567</a></li>
                         <li><i class="fa-regular fa-envelope"></i> <a
-                                href="mailto:hello@obydullahrestaurant.com">hello@obydullahrestaurant.com</a></li>
+                                href="mailto:hello@velvetchilirestaurant.com">hello@velvetchilirestaurant.com</a></li>
                     </ul>
                 </div>
                 <!-- Optional static map -->
@@ -150,7 +150,7 @@ if ( empty( $address ) || empty( $phone ) || empty( $email ) ) {
 // Final fallback to static text
 $address = $address ?: '427 Spice Avenue, Gastronomy District, NY 10012';
 $phone   = $phone ?: '(555) 123-4567';
-$email   = $email ?: 'hello@obydullahrestaurant.com';
+$email   = $email ?: 'hello@velvetchilirestaurant.com';
 
 // Use post title as page title (or fallback)
 $title = get_the_title( $contact_id ) ?: __( 'Contact Us', 'velvet-chili-restaurant-shop' );
@@ -206,7 +206,7 @@ $cf7_active = defined( 'WPCF7_VERSION' );
             <div class="contact-page__info">
                 <div class="contact-info">
                     <h3 class="contact-info__title">
-                        <?php esc_html_e( 'Obydullah Restaurant', 'velvet-chili-restaurant-shop' ); ?></h3>
+                        <?php esc_html_e( 'The Velvet Chili Restaurant', 'velvet-chili-restaurant-shop' ); ?></h3>
                     <ul class="contact-info__list">
                         <li><i class="fa-solid fa-location-dot"></i> <span><?php echo esc_html( $address ); ?></span>
                         </li>
